@@ -62,7 +62,7 @@ body{
 }
 
 .login_content_left{
-    width: 400px;
+    width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,7 +72,7 @@ body{
 }
 
 .login_left_title,.login_left_info,.login_left_link{
-    width: 400px;
+    width: 500px;
     text-align: left;
     color: #fff;
 }
