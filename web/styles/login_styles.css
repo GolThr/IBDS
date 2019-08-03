@@ -26,15 +26,15 @@ body{
 }
 
 .login_logo{
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     margin-left: 100px;
 }
 
 .header_title{
-    font-size: 35px;
+    font-size: 30px;
     color: #fff;
-    line-height: 50px;
+    line-height: 60px;
     text-align: left;
     margin-left: 20px;
 }
@@ -54,15 +54,15 @@ body{
 }
 
 .login_content{
-    width: 1080px;
+    width: 1000px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .login_content_left{
-    width: 500px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,30 +72,30 @@ body{
 }
 
 .login_left_title,.login_left_info,.login_left_link{
-    width: 500px;
+    width: 400px;
     text-align: left;
     color: #fff;
 }
 
 .login_left_title{
-    font-size: 35px;
+    font-size: 30px;
 }
 
 .login_left_info{
-    font-size: 25px;
+    font-size: 20px;
     margin-top: 10px;
 }
 
 .login_left_link{
     color: #ff911e;
     margin-top: 30px;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .login_body{
-    width: 320px;
-    height: 470px;
-    padding: 30px;
+    width: 260px;
+    height: 370px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -105,31 +105,32 @@ body{
 }
 
 .login_title{
-    font-size: 35px;
+    font-size: 30px;
     color: #fff;
-    margin-top: 20px;
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .login_body input{
-    width: 240px;
-    margin-top: 30px;
+    width: 200px;
+    margin-top: 20px;
     background: rgba(255, 255, 255, 0.7);
 }
 
 .login_body button{
-    width: 240px;
-    margin-top: 30px;
+    width: 200px;
+    margin-top: 20px;
 }
 
 .forgot_pwd{
-    width: 240px;
+    width: 200px;
     text-align: left;
     color: #fff;
+    font-size: 12px;
 }
 
 .go_register{
-    margin-top: 10px;
+    margin-top: 5px;
     font-size: 12px;
     color: #fff;
 }
