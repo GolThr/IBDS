@@ -62,7 +62,7 @@ li{
 }
 
 .change_able:hover{
-    border: 0.1rem solid #458cff;
+    border: 0.1rem solid rgba(125, 197, 193, 1);
 }
 .data_list img{
     width: 17px;
@@ -78,8 +78,8 @@ li{
     text-align: center;
     font-size: 15px;
     width: 100%;
-    border: 0;
     background: rgba(255, 255, 255, 0);
+    border: 0.1rem solid rgba(125, 197, 193, 0);
 }
 /*****************************/
 
