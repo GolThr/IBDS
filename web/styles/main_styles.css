@@ -20,6 +20,10 @@ button{
     color: #fff;
 }
 
+button:hover{
+    background: #88d7d3;
+}
+
 /*滑块验证********************/
 .drag{
     width: 200px;
