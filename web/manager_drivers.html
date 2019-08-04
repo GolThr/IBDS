@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title>管理公交人员-智能公交调度系统</title>
     <link rel="stylesheet" href="styles/main_styles.css" type="text/css"/>
-    <link rel="stylesheet" href="styles/manager_upload_styles.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/manager_drivers_styles.css" type="text/css"/>
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/affects.js"></script>
     <script type="text/javascript">
         window.onload = (function (ev) {
             init();
@@ -15,7 +16,67 @@
 <body>
     <script type="text/javascript" src="js/header_manager.js"></script>
 
+    <div class="manager_drivers_body">
+        <div class="manager_drivers_top">
+            <button class="main_btn_style manger_drivers_add">添加</button>
+            <input class="default_input manager_drivers_search" type="text" placeholder="搜索"/>
+        </div>
 
+        <div class="data_list_body driver_list_body">
+            <table class="data_list driver_list" style="border-collapse:separate; border-spacing:0px 10px;">
+                <tr>
+                    <td style="width: 100px;">姓名</td>
+                    <td>工号</td>
+                    <td>电话</td>
+                    <td>线路</td>
+                    <td>性别</td>
+                    <td style="width: 50px;">编辑</td>
+                    <td style="width: 50px;">删除</td>
+                </tr>
+                <tr>
+                    <td>管峥朝</td>
+                    <td class="change_able"><input type="text" value="198004" onblur="onInputNumberBlur(this)" onfocus="onInputNumberFocus(this)"/></td>
+                    <td class="change_able"><input type="text" value="17852651073" onblur="onInputNumberBlur(this)" onfocus="onInputNumberFocus(this)"/></td>
+                    <td class="change_able"><input type="text" value="1号线" onblur="onInputNumberBlur(this)" onfocus="onInputNumberFocus(this)"/></td>
+                    <td class="change_able"><input type="text" value="男" onblur="onInputNumberBlur(this)" onfocus="onInputNumberFocus(this)"/></td>
+                    <td><img src="images/ic_edit_inline.png" onclick="onDeleteInline(this)"/></td>
+                    <td><img src="images/ic_delete_inline.png" onclick="onDeleteInline(this)"/></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!--dialog-->
+    <div class="dialog_content dialog_content_process" style="display: none;" onclick="dialogBack()">
+        <!--add-member-->
+        <div class="dialog_pop dialog_pop_add_driver" style="display: none;">
+            <span class="dialog_header"></span>
+            <span class="dialog_title">添加司机</span>
+            <input id="Dno" class="default_input" type="text" placeholder="姓名">
+            <input id="Dname" class="default_input" type="text" placeholder="工号">
+            <input id="Dauthor" class="default_input" type="text" placeholder="电话" maxlength="11" oninput="value=value.replace(/[^\d]/g,'')">
+            <input id="Dpress" class="default_input" type="text" placeholder="线路">
+            <input id="Dprice" class="default_input" type="text" placeholder="性别">
+            <div class="dialog_btn_line">
+                <button class="main_btn_style dialog_btn_add_driver">添加</button>
+            </div>
+        </div>
+        <div class="dialog_pop dialog_ensure_delete" style="display: none;z-index: 10">
+            <span class="dialog_header"></span>
+            <span class="dialog_title">确认要删除吗?</span>
+            <div class="dialog_btn_line">
+                <button class="main_btn_style dialog_btn_delete_book_ensure" onclick="onEnsureBtnClicked()">确认</button>
+            </div>
+        </div>
+        <!--tips-->
+        <div class="dialog_pop dialog_pop_tips" style="display: none;">
+            <span class="dialog_header"></span>
+            <span class="dialog_title dialog_title_tips">用户已存在</span>
+            <div class="dialog_btn_line">
+                <button class="main_btn_style dialog_btn_tips" onclick="dialogBack()">知道了</button>
+            </div>
+        </div>
+    </div>
 
     <script type="text/javascript" src="js/footer.js"></script>
     <script type="text/javascript" src="js/manager_drivers.js"></script>

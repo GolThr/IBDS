@@ -80,3 +80,10 @@ function waitBtn(time){
         $("#btn_get_code").show();
     }
 }
+
+function dialogBack(){
+    $(".dialog_pop_add_driver").hide();
+    $(".dialog_pop_delete_driver").hide();
+    $(".dialog_content_process").hide();
+    $(".dialog_ensure_delete").hide();
+}

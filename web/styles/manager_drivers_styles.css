@@ -1,0 +1,52 @@
+body{
+    background: #f9f9f9;
+}
+
+.manager_drivers_body{
+    width: 1000px;
+    padding: 100px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.manager_drivers_top{
+    width: 100%;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.manger_drivers_add{
+    padding: 10px 20px;
+    box-shadow: 6px 6px 10px #e9e9e9;
+}
+
+.manager_drivers_search{
+    width: 200px;
+    height: 35px;
+    border: 0.15rem solid #fff;
+}
+
+/*dialog*/
+.dialog_pop_add_driver{
+    height: 28rem;
+    width: 28rem;
+}
+
+.dialog_btn_add_driver{
+    width: 50%;
+}
+
+.dialog_ensure_delete{
+    height: 12rem;
+    width: 28rem;
+}
+
+.dialog_pop_tips{
+    height: 12rem;
+    width: 28rem;
+}

@@ -5,8 +5,8 @@ document.writeln("<div class=\"default_header\">\n" +
     "                <span class=\"default_title\">智能公交调度系统</span>\n" +
     "            </div>\n" +
     "            <div class=\"btn_line\">\n" +
-    "                <button class=\"go_login\">登录</button>\n" +
-    "                <button class=\"go_register\">注册</button>\n" +
+    "                <button class=\"main_btn_style go_login\">登录</button>\n" +
+    "                <button class=\"main_btn_style go_register\">注册</button>\n" +
     "            </div>\n" +
     "        </div>\n" +
     "    </div>");
