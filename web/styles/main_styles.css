@@ -42,9 +42,18 @@ ul{
 }
 
 li{
+    cursor: pointer;
     text-decoration: none;
     text-align: center;
     list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+span{
+    cursor: default;
 }
 
 .gender_line{
