@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="styles/main_styles.css" type="text/css"/>
     <link rel="stylesheet" href="styles/manager_upload_styles.css" type="text/css"/>
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/affects.js"></script>
     <script type="text/javascript">
         window.onload = (function (ev) {
             init();
@@ -16,13 +17,30 @@
     <script type="text/javascript" src="js/header_manager.js"></script>
 
     <div class="data_upload_content">
-        <div class="data_upload_item">
+        <div class="data_upload_item" onclick="onUploadBusData()">
             <img class="data_upload_pic" src="images/pic_bus_data.jpg" onclick=""/>
             <span class="data_upload_title">公交数据 >></span>
         </div>
         <div class="data_upload_item">
             <img class="data_upload_pic" src="images/pic_driver_data.jpg" onclick=""/>
             <span class="data_upload_title">司机信息 >></span>
+        </div>
+    </div>
+
+    <!--dialog-->
+    <div class="dialog_content dialog_content_process" style="display: none;" onclick="dialogBack()">
+        <div class="dialog_pop dialog_pop_upload_file" style="display: none;">
+            <div class='dialog_progress'>
+                <span id="progress"></span>
+            </div>
+            <span class="dialog_title">上传文件</span>
+            <img class="dialog_img_upload_file" src="images/ic_excel_file.png" style="width: 100px;height: auto;" onclick="$('#file_input').click();"/>
+            <input id="file_input" type="file" style="display: none;"/>
+            <span id="file_name" class="dialog_info" style="margin-top: 20px;">点击图片上传Excel文件</span>
+            <div class="dialog_btn_line">
+                <button class="main_btn_style dialog_btn_upload_file" onclick="if(canUpload){onUploadFile()}">确认上传</button>
+                <button class="main_btn_style dialog_btn_upload_complete" onclick="onUploadComplete()" style="display: none;">上传完成</button>
+            </div>
         </div>
     </div>
 

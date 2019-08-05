@@ -128,6 +128,23 @@ li{
     background: #7dc5c1;
 }
 
+.dialog_progress{
+    height: 0.3rem;
+    width: 28rem;
+    position: absolute;
+    top: 0;
+    border-radius: 2rem 2rem 0 0;
+    background: #7dc5c1;
+}
+
+#progress {
+    height: 0.3rem;
+    background-color: #01da00;
+    border-radius: 2rem 2rem 0 0;
+    position: absolute;
+    z-index: 10;
+}
+
 .dialog_title{
     width: 70%;
     text-align: center;

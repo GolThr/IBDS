@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <input type="file" id="file"/>
+    <button onclick="func()">上传</button>
+    <script type="text/javascript">
+        function func() {
+            var formData = new FormData();
+            formData.append("file", $("#file")[0].files[0]);
+            console.log(formData);
+            $.ajax({
+                url: "",
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                success: function (msg) {
+                    console.log("success!");
+                },
+                error: function (msg) {
+                    console.log("error!");
+                }
+            });
+        }
+    </script>
+</body>
+</html>

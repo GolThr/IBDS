@@ -32,3 +32,26 @@
     font-size: 20px;
 }
 
+/*dialog*/
+.dialog_pop_upload_file{
+    height: 25rem;
+    width: 28rem;
+}
+
+.dialog_btn_upload_file{
+    width: 50%;
+    margin-top: 50px;
+    color: #7dc5c1;
+    background: #ffffff;
+    border: #7dc5c1 solid 2px;
+}
+
+.dialog_btn_upload_complete{
+    width: 50%;
+    margin-top: 50px;
+}
+
+.dialog_btn_upload_file_clickable{
+    color: #fff;
+    background: #7dc5c1;
+}
