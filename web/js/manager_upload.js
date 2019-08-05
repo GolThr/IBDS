@@ -56,6 +56,16 @@ function onUploadBusData(){
     canUpload = false;
 }
 
+function onUploadDriverData(){
+    $(".dialog_content").fadeIn("fast");
+    $(".dialog_pop_upload_file").fadeIn("fast");
+    $(".dialog_btn_upload_file").show();
+    $(".dialog_btn_upload_complete").hide();
+    $(".dialog_btn_upload_file").remove("dialog_btn_upload_file_clickable");
+    $('#progress').css('width', "0");
+    canUpload = false;
+}
+
 //绑定所有type=file的元素的onchange事件的处理函数
 $(':file').change(function () {
     var file = this.files[0]; //假设file标签没打开multiple属性，那么只取第一个文件就行了

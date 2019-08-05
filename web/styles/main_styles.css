@@ -47,6 +47,51 @@ li{
     list-style: none;
 }
 
+.gender_line{
+    width: 240px;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+input[type="radio"]{
+    position: absolute;
+    opacity: 0;
+}
+.gender_line input[type="radio"] + label:before {
+    content: '';
+    background: rgba(244, 244, 244, 0);
+    border-radius: 100%;
+    border: 1px solid #7dc5c1;
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    position: relative;
+    top: 4px;
+    margin-right: 10px;
+    vertical-align: top;
+    cursor: pointer;
+    text-align: center;
+    -webkit-transition: all 250ms ease;
+    transition: all 250ms ease;
+}
+.gender_line input[type="radio"]:checked + label:before {
+    background-color: #7dc5c1;
+    box-shadow: inset 0 0 0 3px #f4f4f4;
+}
+.gender_line input[type="radio"]:focus + label:before {
+    outline: none;
+    border-color: #7dc5c1;
+}
+.gender_line input[type="radio"]:disabled + label:before {
+    box-shadow: inset 0 0 0 3px #f4f4f4;
+    border-color: #b4b4b4;
+    background: #b4b4b4;
+}
+.gender_line input[type="radio"] + label:empty:before {
+    margin-right: 0;
+}
 /*data_list******************/
 .data_list_body{
     width: 100%;
@@ -245,7 +290,7 @@ li{
 
 .manager_head{
     width: 35px;
-    height: auto;
+    height: 35px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.5);
 }

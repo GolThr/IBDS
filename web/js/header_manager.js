@@ -6,10 +6,9 @@ document.writeln("<div class=\"default_header\">\n" +
     "            </div>\n" +
     "            <div class=\"default_func_line\">\n" +
     "                <ul class=\"default_func\">\n" +
-    "                    <li>首页</li>\n" +
     "                    <li id=\"manager_upload\" onmouseover=\"onManagerFunc()\" onmouseleave=\"outManagerFunc()\" onclick=\"location.href='/IBDS/manager_upload.html'\">数据上传</li>\n" +
     "                    <li id=\"manager_drivers\" onclick=\"location.href='/IBDS/manager_drivers.html'\">管理公交人员</li>\n" +
-    "                    <li id=\"manager_mine\">个人中心</li>\n" +
+    "                    <li id=\"manager_mine\" onclick=\"location.href='/IBDS/manager_mine.html'\">个人中心</li>\n" +
     "                </ul>\n" +
     "                <div class=\"data_uploade_tab_list\" style=\"display: none;\" onmouseover=\"onManagerFunc()\" onmouseleave=\"outManagerFunc()\">\n" +
     "                    <ul>\n" +
