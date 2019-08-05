@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发车查询-智能公交调度系统</title>
+    <link rel="stylesheet" href="styles/main_styles.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/driver_query_styles.css" type="text/css"/>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/affects.js"></script>
+    <script type="text/javascript">
+        window.onload = (function (e) {
+            init();
+        });
+    </script>
+</head>
+<body id="#top">
+    <script type="text/javascript" src="js/header_driver.js"></script>
+
+    <div class="driver_func_float">
+        <div class="driver_func_item" onmouseover="onFuncPhone()" onmouseleave="outFuncPhone()">
+            <img src="images/ic_phone.png" onclick=""/>
+        </div>
+        <div class="driver_func_item" onmouseover="onFuncSignIn()" onmouseleave="outFuncsignIn()">
+            <img src="images/ic_signin.png" onclick=""/>
+        </div>
+        <div class="driver_func_item" onmouseover="onFuncNote()" onmouseleave="outFuncNote()">
+            <img src="images/ic_note.png" onclick=""/>
+        </div>
+        <a class="driver_func_item" href="#top">
+            <img class="driver_func_return_top" src="images/ic_return_top.png" onclick=""/>
+        </a>
+    </div>
+
+<!--    func_float-->
+    <div class="driver_func_phone_content" style="display: none;" onmouseover="onFuncPhone()" onmouseleave="outFuncPhone()">
+        <span class="driver_func_phone">某主管<br>17852651073</span>
+        <img src="images/ic_arrow.png" style="width: 7px;height: auto;" onclick=""/>
+    </div>
+    <div class="driver_func_signin_content" style="display: none;" onmouseover="onFuncSignIn()" onmouseleave="outFuncsignIn()">
+        <div class="driver_func_signin">
+            <span class="driver_func_signin_title">累计签到<span class="driver_func_signin_days">108</span>天</span>
+            <a class="driver_func_signin_link" href="">立即签到</a>
+        </div>
+        <img src="images/ic_arrow.png" style="width: 7px;height: auto;" onclick=""/>
+    </div>
+    <div class="driver_func_note_content" style="display: none;" onmouseover="onFuncNote()" onmouseleave="outFuncNote()">
+        <div class="driver_func_note">
+            <span>留言(200字以内)</span>
+            <textarea class="driver_func_note_info" maxlength="200"></textarea>
+            <a class="driver_func_note_send" href="">发送</a>
+        </div>
+        <img src="images/ic_arrow.png" style="margin-top: 80px;width: 7px;height: auto;" onclick=""/>
+    </div>
+
+    <div class="driver_query_body">
+        <div class="driver_query_top">
+            <button class="main_btn_style driver_query_print">打印</button>
+            <button class="main_btn_style driver_query_save">保存到本地</button>
+        </div>
+
+        <span class="table_head">2019年8月5日&nbsp;&nbsp;1号线&nbsp;发车时间表</span>
+
+        <div class="data_list_body driver_list_body">
+            <table class="data_list driver_list" style="border-collapse:separate; border-spacing:0px 10px;">
+                <tr>
+                    <td>线路</td>
+                    <td>发车时间</td>
+                </tr>
+                <tr>
+                    <td>1号线</td>
+                    <td>17:15</td>
+                </tr>
+                <tr>
+                    <td>1号线</td>
+                    <td>17:15</td>
+                </tr>
+                <tr>
+                    <td>1号线</td>
+                    <td>17:15</td>
+                </tr>
+                <tr>
+                    <td>1号线</td>
+                    <td>17:15</td>
+                </tr>
+                <tr>
+                    <td>1号线</td>
+                    <td>17:15</td>
+                </tr>
+                <tr>
+                    <td>1号线</td>
+                    <td>17:15</td>
+                </tr>
+                <tr>
+                    <td>1号线</td>
+                    <td>17:15</td>
+                </tr>
+                <tr>
+                    <td>1号线</td>
+                    <td>17:15</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="js/footer.js"></script>
+    <script type="text/javascript" src="js/driver_query.js"></script>
+</body>
+</html>

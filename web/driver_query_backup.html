@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发车查询-智能公交调度系统</title>
+    <link rel="stylesheet" href="styles/main_styles.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/driver_query_styles.css" type="text/css"/>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/affects.js"></script>
+    <script type="text/javascript">
+        window.onload = (function (e) {
+            init();
+        });
+    </script>
+</head>
+<body>
+    <div class="default_header">
+        <div class="default_header_body">
+            <div class="default_header_left">
+                <img class="logo" src="images/logo_line.png " onclick=""/>
+                <span class="default_title">智能公交调度系统</span>
+            </div>
+            <div class="default_func_line">
+                <ul class="default_func">
+                    <li id="driver_query" onclick="location.href='/IBDS/manager_upload.html'">发车查询</li>
+                    <li id="driver_mine" onclick="location.href='/IBDS/manager_mine.html'">个人中心</li>
+                </ul>
+            </div>
+            <div class="default_user_body">
+                <img class="manager_head" src="images/head_default_manager.png " onclick=""/>
+                <span class="manager_name">Driver</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="driver_query_body">
+        <div class="driver_query_top">
+            <button class="main_btn_style driver_query_print">打印</button>
+            <button class="main_btn_style driver_query_save">保存到本地</button>
+        </div>
+
+        <span class="table_head">2019年8月5日&nbsp;&nbsp;1号线&nbsp;发车时间表</span>
+
+        <div class="data_list_body driver_list_body">
+            <table class="data_list driver_list" style="border-collapse:separate; border-spacing:0px 10px;">
+                <tr>
+                    <td>线路</td>
+                    <td>发车时间</td>
+                </tr>
+                <tr>
+                    <td>1号线</td>
+                    <td>17:15</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="js/footer.js"></script>
+    <script type="text/javascript" src="js/driver_query.js"></script>
+</body>
+</html>

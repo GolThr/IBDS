@@ -102,6 +102,12 @@ input[type="radio"]{
     margin-right: 0;
 }
 /*data_list******************/
+.table_head{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .data_list_body{
     width: 100%;
     padding: 0.3rem 0;
