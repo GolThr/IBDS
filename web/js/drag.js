@@ -52,7 +52,7 @@ btn.onmousedown = function(e){
             text.style.color = "#fff";
             btn.innerHTML = "&radic;";
             //btn.style.color = "#ff5db4";
-            bg.style.backgroundColor = "#ff664b";
+            bg.style.backgroundColor = "#7dc5c1";
 
             //2.设置滑动成功后的状态
             success = true;

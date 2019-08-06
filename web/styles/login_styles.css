@@ -201,6 +201,15 @@ body{
     color: #fff;
 }
 
+.verification_line{
+    width: 206px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
 /*re-item*****************************/
 .re-item {
     width: 260px;

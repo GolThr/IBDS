@@ -40,6 +40,15 @@ body{
     color: #fff;
 }
 
+.secondary_button_style{
+    height: 35px;
+    border-radius: 5px;
+    border: 0;
+    background: rgba(125, 197, 193, 0);
+    border: 0.15rem solid #7dc5c1;
+    color: #fff;
+}
+
 ul{
     display: flex;
     flex-direction: row;
@@ -416,7 +425,7 @@ input[type="radio"]{
     width: 30px;
     height: 100%;
     position: absolute;
-    background-color: #ff664b;
+    background-color: #7dc5c1;
     border-radius: 5px;
 }
 
