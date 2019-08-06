@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心-智能公交调度系统</title>
+    <link rel="stylesheet" href="styles/main_styles.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/common_styles.css" type="text/css"/>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/affects.js"></script>
+    <script type="text/javascript">
+        window.onload = (function (ev) {
+            init();
+        });
+    </script>
+</head>
+<body style="background: #f9f9f9;">
+    <script type="text/javascript" src="js/header_driver.js"></script>
+
+    <div class="mine_body">
+        <div class="mine_menu_content">
+            <div class="mine_user_body">
+                <div class="mine_user_top">
+                    <img class="mine_user_head" src="images/head_default_manager.png" onclick=""/>
+                    <span class="mine_user_name">Driver</span>
+                </div>
+                <a class="mine_logout" href="">退出登录</a>
+            </div>
+            <div class="mine_menu_body">
+                <ul>
+                    <li id="driver_menu_personal">个人资料</li>
+                    <li id="driver_menu_changepwd">修改密码</li>
+                    <li id="driver_menu_logs">行车日志</li>
+                    <li id="driver_menu_notes">已发布留言</li>
+                </ul>
+            </div>
+        </div>
+        <div class="mine_pages_content">
+            <div class="mine_pages_body driver_mine_personal_page" style="height: 565px;display: none;">
+                <div class="mine_pages_body_line">
+                    <span>用&nbsp;&nbsp;户&nbsp;&nbsp;名</span>
+                    <input class="default_input mine_pages_input" type="text" value="Manager"/>
+                </div>
+                <div class="mine_pages_body_line">
+                    <span>手&nbsp;&nbsp;机&nbsp;&nbsp;号</span>
+                    <input class="default_input mine_pages_input" type="text" value="17852651073"/>
+                </div>
+                <div class="mine_pages_body_line">
+                    <span>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</span>
+                    <input class="default_input mine_pages_input" type="text" value="山东省"/>
+                </div>
+                <div class="mine_pages_body_line">
+                    <span>公交公司</span>
+                    <input class="default_input mine_pages_input" type="text" value="好公交"/>
+                </div>
+                <div class="mine_pages_body_line">
+                    <span>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</span>
+                    <div class="gender_line">
+                        <div class="gender_line_item">
+                            <input id="input_gender_male" name="input_gender" type="radio" value="男" oninput="onStepThreeBlur();" onfocus="onStepThreeBlur();"/>
+                            <label for="input_gender_male" style="margin: 0 50px 0 0">男</label>
+                        </div>
+                        <div class="gender_line_item">
+                            <input id="input_gender_female" name="input_gender" type="radio" value="女" oninput="onStepThreeBlur();" onfocus="onStepThreeBlur();"/>
+                            <label for="input_gender_female">女</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mine_pages_body_line">
+                    <span>工&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</span><input class="default_input mine_pages_input" type="text" value="80005"/>
+                </div>
+                <button class="main_btn_style" style="width: 100px;margin-top: 30px;">确认修改</button>
+            </div>
+            <div class="mine_pages_body driver_mine_changepwd_page" style="height: 300px;display: none;">
+                <div class="mine_pages_body_line">
+                    <span>原&nbsp;&nbsp;密&nbsp;&nbsp;码</span>
+                    <input class="default_input mine_pages_input" type="password" placeholder="请输入原密码"/>
+                </div>
+                <div class="mine_pages_body_line">
+                    <span>新&nbsp;&nbsp;密&nbsp;&nbsp;码</span>
+                    <input class="default_input mine_pages_input" type="password" placeholder="请输入新密码"/>
+                </div>
+                <div class="mine_pages_body_line">
+                    <span>确认密码</span>
+                    <input class="default_input mine_pages_input" type="password" placeholder="请确认密码"/>
+                </div>
+                <button class="main_btn_style" style="width: 100px;margin-top: 30px;">确认修改</button>
+            </div>
+            <div class="mine_pages_card_body driver_mine_logs_page" style="display: none;">
+                <div class="mine_card_item">
+                    <div class="mine_card_item_top">
+                        <div>
+                            <img class="author_head" src="images/head_default_manager.png" onclick=""/>
+                            <span class="author_name">Manager</span>
+                        </div>
+                        <span class="publish_time">2019-08-05</span>
+                    </div>
+                    <span class="mine_card_item_body">发布啥了？？发布个鬼啊。。。就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发</span>
+                </div>
+                <div class="mine_card_item">
+                    <div class="mine_card_item_top">
+                        <div>
+                            <img class="author_head" src="images/head_default_manager.png" onclick=""/>
+                            <span class="author_name">Manager</span>
+                        </div>
+                        <span class="publish_time">2019-08-05</span>
+                    </div>
+                    <span class="mine_card_item_body">发布啥了？？发布个鬼啊。。。就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发</span>
+                </div>
+                <div class="mine_card_item">
+                    <div class="mine_card_item_top">
+                        <div>
+                            <img class="author_head" src="images/head_default_manager.png" onclick=""/>
+                            <span class="author_name">Manager</span>
+                        </div>
+                        <span class="publish_time">2019-08-05</span>
+                    </div>
+                    <span class="mine_card_item_body">发布啥了？？发布个鬼啊。。。就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发</span>
+                </div>
+            </div>
+            <div class="mine_pages_card_body driver_mine_notes_page" style="display: none;">
+                <div class="mine_card_item">
+                    <div class="mine_card_item_top">
+                        <div>
+                            <img class="author_head" src="images/head_default_manager.png" onclick=""/>
+                            <span class="author_name">Manager</span>
+                        </div>
+                        <span class="publish_time">2019-08-05</span>
+                    </div>
+                    <span class="mine_card_item_body">发布啥了？？发布个鬼啊。。。就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发</span>
+                </div>
+                <div class="mine_card_item">
+                    <div class="mine_card_item_top">
+                        <div>
+                            <img class="author_head" src="images/head_default_manager.png" onclick=""/>
+                            <span class="author_name">Manager</span>
+                        </div>
+                        <span class="publish_time">2019-08-05</span>
+                    </div>
+                    <span class="mine_card_item_body">发布啥了？？发布个鬼啊。。。就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发</span>
+                </div>
+                <div class="mine_card_item">
+                    <div class="mine_card_item_top">
+                        <div>
+                            <img class="author_head" src="images/head_default_manager.png" onclick=""/>
+                            <span class="author_name">Manager</span>
+                        </div>
+                        <span class="publish_time">2019-08-05</span>
+                    </div>
+                    <span class="mine_card_item_body">发布啥了？？发布个鬼啊。。。就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发就不发</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/footer.js"></script>
+    <script type="text/javascript" src="js/driver_mine.js"></script>
+</body>
+</html>
