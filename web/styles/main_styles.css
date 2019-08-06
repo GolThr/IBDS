@@ -10,10 +10,10 @@ body{
 .default_input{
     height: 30px;
     border-radius: 5px;
-    border: 0;
     box-shadow: 1px 1px 6px #e9e9e9;
     text-indent: 1em;
     font-size: 14px;
+    border: 0.15rem solid rgba(125, 197, 193, 0);
 }
 
 .default_input:focus{
@@ -30,6 +30,14 @@ body{
 
 .main_btn_style:hover{
     background: #88d7d3;
+}
+
+.main_btn_style_none{
+    height: 35px;
+    border-radius: 5px;
+    border: 0;
+    background: #a5b0b3;
+    color: #fff;
 }
 
 ul{
@@ -49,6 +57,7 @@ li{
 }
 
 a{
+    cursor: pointer;
     text-decoration: none;
 }
 

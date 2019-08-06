@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智能公交调度系统</title>
+    <link rel="stylesheet" href="styles/main_styles.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/login_styles.css" type="text/css"/>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <img class="login_back" src="images/pic_background.jpg" onclick=""/>
+    <div class="login_header">
+        <img class="login_logo" src="images/logo.png" onclick=""/>
+        <span class="header_title">智能公交调度系统</span>
+    </div>
+    <div class="body_content">
+        <div class="login_content">
+            <div class="login_content_left">
+                <span class="login_left_title">遇见最美的自己</span>
+                <span class="login_left_info">To meet the most beautiful yourself</span>
+                <a class="login_left_link">Record ></a>
+            </div>
+            <div class="login_body" style="display: none;">
+                <span class="login_title">欢迎登录</span>
+                <input class="default_input email_input" type="email" placeholder="常用邮箱"/>
+                <input class="default_input password_input" type="password" placeholder="密码"/>
+                <div class="drag" id="drag">
+                    <div class="bg"></div>
+                    <div class="text" onselectstart="return false;">请拖动滑块验证</div>
+                    <div class="btn">&gt;&gt;</div>
+                </div>
+                <a class="forgot_pwd">忘记密码？</a>
+                <button class="main_btn_style login_btn">登录</button>
+                <a class="go_register">还没有账号？立即注册 》</a>
+            </div>
+            <div class="register_body">
+                <div class="register_step_1">
+                    <span class="register_title">欢迎注册</span>
+                    <div class="register_input_column">
+                        <input id="register_email" class="default_input email_input" type="email" placeholder="常用邮箱" onfocus="onStepOneBlur()" oninput="onStepOneBlur()"/>
+                        <input id="register_verify" class="default_input password_input" type="text" placeholder="验证码" onfocus="onStepOneBlur()" oninput="onStepOneBlur()"/>
+                        <input id="register_cp_name" class="default_input password_input" type="text" placeholder="公司名称" onfocus="onStepOneBlur()" oninput="onStepOneBlur()"/>
+                        <input id="register_cp_address" class="default_input password_input" type="text" placeholder="公司地址" onfocus="onStepOneBlur()" oninput="onStepOneBlur()"/>
+                        <input id="register_cp_phone" class="default_input password_input" type="text" placeholder="公司电话" onfocus="onStepOneBlur()" oninput="onStepOneBlur()"/>
+                    </div>
+                    <button class="main_btn_style_none register_next_btn" onclick="onNextBtn()">下一步</button>
+                    <a class="go_register">已经有账号？返回登录 》</a>
+                </div>
+                <div class="register_step_2" style="display: none;">
+                    <span class="register_title">欢迎注册</span>
+                    <div class="register_input_column">
+                        <input id="register_username" class="default_input password_input" type="text" placeholder="用户名" onfocus="onStepTwoBlur()" oninput="onStepTwoBlur()"/>
+                        <input id="register_pwd" class="default_input password_input" type="text" placeholder="密码" onfocus="onStepTwoBlur()" oninput="onStepTwoBlur()"/>
+                        <input id="register_repwd" class="default_input password_input" type="text" placeholder="确认密码" onfocus="onStepTwoBlur()" oninput="onStepTwoBlur()"/>
+                        <div class="gender_line">
+                            <div class="gender_line_item">
+                                <input id="input_gender_male" name="input_gender" type="radio" value="男" onfocus="onStepTwoBlur()" oninput="onStepTwoBlur()"/>
+                                <label for="input_gender_male" style="margin: 0 50px 0 0;color: #fff;">男</label>
+                            </div>
+                            <div class="gender_line_item">
+                                <input id="input_gender_female" name="input_gender" type="radio" value="女" onfocus="onStepTwoBlur()" oninput="onStepTwoBlur()"/>
+                                <label for="input_gender_female" style="color: #fff;">女</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="main_btn_style_none register_complete_btn" style="margin-bottom: 22px" onclick="onCompleteBtn()">完成注册</button>
+                </div>
+                <div class="register_step_complete" style="display: none;">
+                    <span class="register_title">注册成功</span>
+                    <div class="register_input_column">
+                        <img src="images/ic_register_complete.png" onclick=""/>
+                    </div>
+                    <button class="main_btn_style go_login_btn" style="margin-bottom: 22px" onclick="">去登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/drag.js"></script>
+    <script type="text/javascript" src="js/login_register.js"></script>
+</body>
+</html>
