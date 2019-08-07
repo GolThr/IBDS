@@ -161,7 +161,7 @@ body{
     border-radius: 5px;
 }
 
-.register_step_1,.register_step_2,.register_step_complete,.login_body_item,.login_body_forgot{
+.register_step_1,.register_step_2,.register_step_complete,.login_body_item,.login_body_forgot,.login_body_complete{
     width: 100%;
     height: 100%;
     display: flex;

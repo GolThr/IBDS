@@ -78,6 +78,8 @@ function waitBtn(time){
     }else if (time == 0){
         $("#btn_wait").hide();
         $("#btn_get_code").show();
+        $("#btn_wait_1").hide();
+        $("#btn_get_code_1").show();
     }
 }
 

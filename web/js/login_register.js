@@ -9,6 +9,11 @@ var register_pwd;
 var register_repwd;
 var register_gender;
 
+var forgot_email;
+var forgot_verify;
+var forgot_pwd;
+var forgot_repwd;
+
 function onGoRegisterClicked() {
 
 }
@@ -62,7 +67,8 @@ function onNextBtn() {
     }
 }
 
-function onCompleteBtn() {register_username = $.trim($("#register_username").val());
+function onCompleteBtn() {
+    register_username = $.trim($("#register_username").val());
     register_pwd = $.trim($("#register_pwd").val());
     register_repwd = $.trim($("#register_repwd").val());
     register_gender = $.trim($(".gender_line input[name=\"input_gender\"]:checked").val());
@@ -73,6 +79,35 @@ function onCompleteBtn() {register_username = $.trim($("#register_username").val
     }else {
         $(".register_step_2").hide();
         $(".register_step_complete").fadeIn(100);
+    }
+}
+
+
+function onForgotPWDBlur() {
+    forgot_email = $.trim($("#forgot_email").val());
+    forgot_verify = $.trim($("#forgot_verify").val());
+    forgot_pwd = $.trim($("#forgot_pwd").val());
+    forgot_repwd = $.trim($("#forgot_repwd").val());
+    if((forgot_email == "" || forgot_email == null) || (forgot_verify == "" || forgot_verify == null) || (forgot_pwd == "" || forgot_pwd == null) || (forgot_repwd == "" || forgot_repwd == null)){
+        $(".login_next_btn").removeClass("main_btn_style");
+        $(".login_next_btn").addClass("main_btn_style_none");
+    }else {
+        $(".login_next_btn").removeClass("main_btn_style_none");
+        $(".login_next_btn").addClass("main_btn_style");
+    }
+}
+
+function onChangePWDBtn() {
+    forgot_email = $.trim($("#forgot_email").val());
+    forgot_verify = $.trim($("#forgot_verify").val());
+    forgot_pwd = $.trim($("#forgot_pwd").val());
+    forgot_repwd = $.trim($("#forgot_repwd").val());
+    if((forgot_email == "" || forgot_email == null) || (forgot_verify == "" || forgot_verify == null) || (forgot_pwd == "" || forgot_pwd == null) || (forgot_repwd == "" || forgot_repwd == null)){
+        $(".login_next_btn").removeClass("main_btn_style");
+        $(".login_next_btn").addClass("main_btn_style_none");
+    }else {
+        $(".login_body_forgot").hide();
+        $(".login_body_complete").fadeIn(100);
     }
 }
 
