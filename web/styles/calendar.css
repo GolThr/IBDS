@@ -81,6 +81,7 @@
 }
 .calendar-date {}
 .calendar-date .item {
+  color: #a4a4a4;
   border-radius: 50%;
   cursor: pointer;
   font-size: 14px;
