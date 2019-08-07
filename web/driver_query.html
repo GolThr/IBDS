@@ -52,10 +52,23 @@
         <img src="images/ic_arrow.png" style="margin-top: 80px;width: 7px;height: auto;" onclick=""/>
     </div>
 
-    <div class="driver_query_body">
+    <div class="driver_query_body" style="position: relative;">
         <div class="driver_query_top">
             <button class="main_btn_style driver_query_print">打印</button>
-            <button class="main_btn_style driver_query_save">保存到本地</button>
+            <div class="driver_query_right_btn_line">
+                <div class="drop_down_list_content" style="margin-right: 20px" onclick="$('.drop_down_list_body').slideToggle();">
+                    <span class="drop_down_list_title">查看所有</span>
+                    <img src="images/ic_arrow_down.png" onclick="" style="width: 13px;height: 13px;margin-left: 10px;"/>
+                </div>
+                <button class="main_btn_style driver_query_save">保存到本地</button>
+            </div>
+        </div>
+
+        <div class="drop_down_list_body" style="display: none;">
+            <ul>
+                <li onclick="$('.drop_down_list_title').text('查看所有');$('.drop_down_list_body').slideUp();">查看所有</li>
+                <li onclick="$('.drop_down_list_title').text('仅看自己');$('.drop_down_list_body').slideUp();">仅看自己</li>
+            </ul>
         </div>
 
         <span class="table_head">2019年8月5日&nbsp;&nbsp;1号线&nbsp;发车时间表</span>
