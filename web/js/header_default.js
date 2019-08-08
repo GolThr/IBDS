@@ -14,3 +14,7 @@ document.writeln("<div class=\"default_header\">\n" +
 $(".go_login").click(function (e) {
     location.href = '/IBDS/login.html';
 });
+
+$(".go_register").click(function (e) {
+    location.href = '/IBDS/login.html?type=register';
+});

@@ -7,6 +7,30 @@
     <link rel="stylesheet" href="styles/login_styles.css" type="text/css"/>
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="js/affects.js"></script>
+    <script type="text/javascript">
+        var $_GET = (function(){
+            var url = window.document.location.href.toString();
+            var u = url.split("?");
+            if(typeof(u[1]) == "string"){
+                u = u[1].split("&");
+                var get = {};
+                for(var i in u){
+                    var j = u[i].split("=");
+                    get[j[0]] = j[1];
+                }
+                return get;
+            } else {
+                return {};
+            }
+        })();
+        window.onload = (function (ev) {
+            var type = $_GET['type'];
+            console.log(type);
+            if(type == 'register'){
+                turnToRegister();
+            }
+        });
+    </script>
 </head>
 <body>
     <img class="login_back" src="images/pic_background.jpg" onclick=""/>
