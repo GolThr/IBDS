@@ -20,9 +20,11 @@ function init() {
 
 function initManagerInfo(){
     //初始化信息ajax_initManagerInfo_POST
-    //发出(data)：
+    //发出(data)：邮箱email
     //接收(json)：ifsuccess:0(失败),1(成功), 用户名username, 性别gender, 手机号phone, 邮箱email, 公交公司company, 地址address
-        console.log("InitManagerInfo");
+    var data = {email:user_info.email};
+    console.log(data);
+    console.log("InitManagerInfo");
     $.ajax({
         url: "/IBDS/initManagerInfo", //后台请求数据
         type: "post",
