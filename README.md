@@ -1,5 +1,12 @@
 # IBDS
 IBDS(IntelligenceBusDispatchSystem)智能公交调度系统
+
+*****************************
+1. 形如ajax_login_POST的字段是通过搜索用来在相应js文件定位的；
+2. 所有头像请保存在/IBDS/head/文件夹下
+3. 所有文件如需保存请保存在/IBDS/asstes/文件夹下
+-----------------------------
+
 login_register.js
 1. 登录ajax_login_POST
 2. 获取验证码ajax_getVerifyCode_POST
