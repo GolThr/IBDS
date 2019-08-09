@@ -224,6 +224,45 @@ public class UserDaoImpl {
         System.out.println("DaoFindUserById:OK");
         return user;
     }
+
+    //管理员修改个人信息
+    public int ModifyManagerInfor(String Username, String Sex,String Tel,String Email,String Company,String Address) throws Exception {
+        System.out.println("ModifyManagerInfo:...");
+        int flag = 0;
+        String sql = "UPDATE user_table SET Username=?,Sex=?,Tel=?,Company=?,Address=? WHERE Email = ?";
+        this.pstmt = this.conn.prepareStatement(sql);
+        this.pstmt.setString(1, Username);
+        this.pstmt.setString(2, Sex);
+        this.pstmt.setString(3, Tel);
+        this.pstmt.setString(4, Company);
+        this.pstmt.setString(5, Address);
+        this.pstmt.setString(6, Email);
+        System.out.println("ForgetPwd-sql:" + sql);
+        if (this.pstmt.executeUpdate() > 0) {
+            System.out.println("acb");
+            flag = 1;
+        }
+        System.out.println("def");
+        this.pstmt.close();
+        return flag;
+    }
+
+    //管理员修改密码
+    public boolean ModifyPwd(String Email, String NewPwd,String OriginPwd) throws Exception {
+        System.out.println("ModifyPassword:...");
+        boolean flag = false;
+        String sql = "UPDATE user_table SET Password = ? WHERE Email = ? and Password= ?";
+        this.pstmt = this.conn.prepareStatement(sql);
+        this.pstmt.setString(1, NewPwd);
+        this.pstmt.setString(2, Email);
+        this.pstmt.setString(3, OriginPwd);
+        System.out.println("ForgetPwd-sql:" + sql);
+        if (this.pstmt.executeUpdate() > 0) {
+            flag = true;
+        }
+        this.pstmt.close();
+        return flag;
+    }
 }
 
 
