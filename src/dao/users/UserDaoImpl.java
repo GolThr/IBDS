@@ -246,6 +246,23 @@ public class UserDaoImpl {
         this.pstmt.close();
         return flag;
     }
+
+    //管理员修改密码
+    public boolean ModifyPwd(String Email, String NewPwd,String OriginPwd) throws Exception {
+        System.out.println("ModifyPassword:...");
+        boolean flag = false;
+        String sql = "UPDATE user_table SET Password = ? WHERE Email = ? and Password= ?";
+        this.pstmt = this.conn.prepareStatement(sql);
+        this.pstmt.setString(1, NewPwd);
+        this.pstmt.setString(2, Email);
+        this.pstmt.setString(3, OriginPwd);
+        System.out.println("ForgetPwd-sql:" + sql);
+        if (this.pstmt.executeUpdate() > 0) {
+            flag = true;
+        }
+        this.pstmt.close();
+        return flag;
+    }
 }
 
 

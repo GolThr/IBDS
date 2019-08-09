@@ -84,6 +84,14 @@
         <url-pattern>/modifyManagerInfo</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ModifyPwdServlet</servlet-name>
+        <servlet-class>servlet.ModifyPwdServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModifyPwdServlet</servlet-name>
+        <url-pattern>/changePWD</url-pattern>
+    </servlet-mapping>
 
 
 
