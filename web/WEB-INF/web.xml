@@ -38,4 +38,15 @@
         <servlet-name>AddDriverServlet</servlet-name>
         <url-pattern>/addDriver</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ResearchServlet</servlet-name>
+        <servlet-class>servlet.ResearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResearchServlet</servlet-name>
+        <url-pattern>/initDrivers</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>

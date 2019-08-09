@@ -3,11 +3,11 @@ package bean;
 public class User {
     private String email;
     private String password;
-    private int tel;
+    private String tel;
     private String address;
     private String company;
     private String sex;
-    private int worknumber;
+    private String worknumber;
     private String username;
     private String introduction;
     private String avatar;
@@ -46,11 +46,11 @@ public class User {
         this.password = password;
     }
 
-    public int getTel() {
+    public String getTel() {
         return tel;
     }
 
-    public void setTel(int tel) {
+    public void setTel(String tel) {
         this.tel = tel;
     }
 
@@ -78,11 +78,11 @@ public class User {
         this.sex = sex;
     }
 
-    public int getWorknumber() {
+    public String getWorknumber() {
         return worknumber;
     }
 
-    public void setWorknumber(int worknumber) {
+    public void setWorknumber(String worknumber) {
         this.worknumber = worknumber;
     }
 

@@ -6,6 +6,8 @@ import db.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDaoImpl {
     private DBConnection dbc = null;
@@ -16,6 +18,48 @@ public class UserDaoImpl {
         this.dbc = new DBConnection();
         this.conn = this.dbc.getConnection();
     }
+
+    //显示查询
+    public List<User> findUserByStatus(int Status) throws Exception {
+        System.out.println("DaoFindUserByStatus:...");
+
+        String sql = "SELECT * FROM user_table WHERE Status=?";
+
+        this.pstmt = this.conn.prepareStatement(sql);
+        this.pstmt.setInt(1,Status);
+
+        ResultSet rs = this.pstmt.executeQuery();
+        System.out.println("--findAllBook:executeOK");
+
+        List<User> UserList = new ArrayList<>();
+        while (rs.next()){
+            System.out.println("123");
+            User user=new User();
+            user.setEmail(rs.getString("Email"));
+            user.setPassword(rs.getString("Password"));
+            user.setAddress(rs.getString("Address"));
+            user.setAvatar(rs.getString("Avatar"));
+            user.setUsername(rs.getString("Username"));
+            user.setCompany(rs.getString("Company"));
+            user.setSex(rs.getString("Sex"));
+            user.setWorknumber(rs.getString("Worknumber"));
+            user.setTel(rs.getString("Tel"));
+            user.setRoute(rs.getString("route"));
+            UserList.add(user);
+            System.out.println("--ResearchAlluser:whileEnd_OK");
+            System.out.println("route"+user.getRoute());
+            System.out.println("name"+user.getUsername());
+            System.out.println(user.getCompany());
+        }
+        this.pstmt.close();
+
+
+        System.out.println("FindUserByStatus:OK");
+        return UserList;
+    }
+
+
+
 
     //管理员添加司机信息
     public boolean addDriver(String Email,String Password,String Name,String Worknumber,String Tel,String Route,String Sex,int status) throws Exception {
@@ -98,7 +142,7 @@ public class UserDaoImpl {
             user.setUsername(rs.getString("username"));
             user.setCompany(rs.getString("company"));
             user.setSex(rs.getString("sex"));
-            user.setTel(rs.getInt("tel"));
+            user.setTel(rs.getString("tel"));
             user.setRoute(rs.getString("route"));
             user.setStatus(rs.getInt("status"));
         }
