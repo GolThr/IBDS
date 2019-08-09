@@ -41,6 +41,7 @@ function updateSession(data) {
     user_info.address = data.address;
     sessionStorage.setItem("user_info", JSON.stringify(user_info));
     location.reload();
+    showTip("信息修改成功！");
 }
 
 function onModifyInfo(){
@@ -77,14 +78,14 @@ function onModifyInfo(){
                                 if(msg.ifsuccess == '1'){
                                     updateSession(data);
                                 }else {
-                                    alert("内部错误，请联系管理员！！！");
+                                    showTip("信息修改失败！");
                                 }
                             },
                             error: function (msg) {
                                 console.log("LoginAjax:Error!");
                                 console.log(msg);
                                 alert("请求失败，请重试");
-                                updateSession(data);
+                                showTip("信息修改失败！");
                             }
                         });
                     }else {
