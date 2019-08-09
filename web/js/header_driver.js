@@ -6,7 +6,7 @@ document.writeln("<div class=\"default_header\">\n" +
     "            </div>\n" +
     "            <div class=\"default_func_line\">\n" +
     "                <ul class=\"default_func\">\n" +
-    "                    <li id=\"driver_query\" onclick=\"location.href='/IBDS/driver_upload.html'\">发车查询</li>\n" +
+    "                    <li id=\"driver_query\" onclick=\"location.href='/IBDS/driver_query.html'\">发车查询</li>\n" +
     "                    <li id=\"driver_mine\" onclick=\"location.href='/IBDS/driver_mine.html'\">个人中心</li>\n" +
     "                </ul>\n" +
     "            </div>\n" +
