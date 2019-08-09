@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import factory.DAOFactory;
 import utils.GetRequestJsonUtils;
 
+import javax.naming.Name;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,12 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "RegisterServlet")
-public class RegisterServlet extends HttpServlet {
+@WebServlet(name = "AdDriverServlet")
+public class AddDriverServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    public RegisterServlet() {
+    public AddDriverServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,16 +44,18 @@ public class RegisterServlet extends HttpServlet {
         System.out.println("getJson:OK");
 
         String Email = json.getString("email");
-        String Company = json.getString("cp_name");
-        String Address =json.getString("cp_address");
-        String  Tel = json.getString("cp_phone");
-        String Username =json.getString("username");
-        String Password = json.getString("password");
-        int status=0;
+        String Name = json.getString("name");
+        String Worknumber =json.getString("id");
+        String Tel = json.getString("phone");
+        String Route =json.getString("line");
+        String Sex = json.getString("gender");
+        int status=1;
+        String Password="123456";
         boolean flag = false;
-
+        System.out.println(Email+" "+Name+" " + Worknumber+" "+ Tel+" "+Route+" "+Sex);
         try{
-            flag=DAOFactory.getUserDaoInstance().addUser(Email,Company,Address,Tel,Username,Password,status);
+            System.out.println("abc");
+            flag=DAOFactory.getUserDaoInstance().addDriver(Email,Password,Name,Worknumber,Tel,Route,Sex,status);
         }catch (Exception var9){
             System.out.println("DataBaseQueryError!!数据库添加错误。。。");
         }

@@ -29,4 +29,13 @@
         <servlet-name>ForgetPwdServlet</servlet-name>
         <url-pattern>/forgotPWD</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddDriverServlet</servlet-name>
+        <servlet-class>servlet.AddDriverServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddDriverServlet</servlet-name>
+        <url-pattern>/addDriver</url-pattern>
+    </servlet-mapping>
 </web-app>

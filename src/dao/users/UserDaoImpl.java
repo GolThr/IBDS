@@ -17,15 +17,40 @@ public class UserDaoImpl {
         this.conn = this.dbc.getConnection();
     }
 
+    //管理员添加司机信息
+    public boolean addDriver(String Email,String Password,String Name,String Worknumber,String Tel,String Route,String Sex,int status) throws Exception {
+        System.out.println("addDriver:...");
+        boolean flag = false;
+        String sql = "INSERT INTO user_table(Email,Password,Tel,Sex,Worknumber,Username,route,Status) VALUES(?,?,?,?,?,?,?,?)";
+        this.pstmt = this.conn.prepareStatement(sql);
+        this.pstmt.setString(1,Email);
+        this.pstmt.setString(2,Password);
+        this.pstmt.setString(3,Tel);
+        this.pstmt.setString(4,Sex);
+        this.pstmt.setString(5,Worknumber);
+        this.pstmt.setString(6,Name);
+        this.pstmt.setString(7,Route);
+        this.pstmt.setInt(8,status);
+        System.out.println("addDriver-sql:" + sql);
+        if (this.pstmt.executeUpdate() > 0) {
+            flag = true;
+        }
+        this.pstmt.close();
+        return flag;
+    }
+
+
+
+
     //注册时添加的信息
-    public boolean addUser(String Email,String Company,String Address,int Tel,String Username,String Password,int Status) throws Exception {
+    public boolean addUser(String Email,String Company,String Address,String Tel,String Username,String Password,int Status) throws Exception {
         System.out.println("addUser:...");
         boolean flag = false;
         String sql = "INSERT INTO user_table(Email, Password, Tel, Address, Company, Username,Status) VALUES(?,?,?,?,?,?,?)";
         this.pstmt = this.conn.prepareStatement(sql);
         this.pstmt.setString(1,Email);
         this.pstmt.setString(2,Password);
-        this.pstmt.setInt(3,Tel);
+        this.pstmt.setString(3,Tel);
         this.pstmt.setString(4,Address);
         this.pstmt.setString(5,Company);
         this.pstmt.setString(6,Username);
@@ -34,6 +59,7 @@ public class UserDaoImpl {
         if (this.pstmt.executeUpdate() > 0) {
             flag = true;
         }
+        System.out.println("def");
         this.pstmt.close();
         return flag;
     }
