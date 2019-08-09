@@ -34,6 +34,17 @@ function init() {
     });
 }
 
+
+function checkEmail(email) {
+    var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+    if(reg.test(email)){
+        return true;
+    }else{
+        return false;
+    }
+    return false;
+}
+
 $(".manger_drivers_add").click(function () {
     $(".dialog_content").fadeIn("fast");
     $(".dialog_pop_delete_driver").hide();
@@ -204,66 +215,73 @@ function onChangeData(email, data_type, data_new) {
 
 //添加司机
 function onAddDriverBtn() {
+    var add_email = $.trim($('#add_email').val());
     var add_name = $.trim($('#add_name').val());
     var add_id = $.trim($('#add_id').val());
     var add_phone = $.trim($('#add_phone').val());
     var add_line = $.trim($('#add_line').val());
     var add_gender = $.trim($(".gender_line input[name=\"input_gender\"]:checked").val());
-    if(add_name != '' && add_name != null){
-        $('#add_name').css({'border-color': 'rgba(203,54,56,0)'});
-        if(add_id != '' && add_id != null){
-            $('#add_id').css({'border-color': 'rgba(203,54,56,0)'});
-            if(add_phone != '' && add_phone != null){
-                $('#add_phone').css({'border-color': 'rgba(203,54,56,0)'});
-                if(add_line != '' && add_line != null){
-                    $('#add_line').css({'border-color': 'rgba(203,54,56,0)'});
-                    if(add_gender != '' && add_gender != null){
-                        $('.gender_line').css({'border-color': 'rgba(203,54,56,0)'});
-                        //添加司机ajax_addDriver_POST
-                        //发出(data)：司机姓名name, 工号id, 电话phone, 线路line, 性别gender
-                        //接收(json)：ifsuccess:0(失败),1(成功)
-                        var data= {name:add_name,id:add_id,phone:add_phone,line:add_line,gender:add_gender};
-                        console.log(data);
-                        console.log("AddDriverAjax");
-                        $.ajax({
-                            url: "/IBDS/addDriver", //后台请求数据
-                            dataType: "json",
-                            data:JSON.stringify(data),
-                            type: "post",
-                            success: function (msg) {
-                                console.log("AddDriverAjax:Success!");
-                                console.log(msg);
-                                if(msg.ifsuccess == '1'){
-                                    location.reload();
-                                }else {
-                                    alert("添加司机失败");
+    if(checkEmail(add_email)){
+        $('#add_email').css({'border-color': 'rgba(203,54,56,0)'});
+        if(add_name != '' && add_name != null){
+            $('#add_name').css({'border-color': 'rgba(203,54,56,0)'});
+            if(add_id != '' && add_id != null){
+                $('#add_id').css({'border-color': 'rgba(203,54,56,0)'});
+                if(add_phone != '' && add_phone != null){
+                    $('#add_phone').css({'border-color': 'rgba(203,54,56,0)'});
+                    if(add_line != '' && add_line != null){
+                        $('#add_line').css({'border-color': 'rgba(203,54,56,0)'});
+                        if(add_gender != '' && add_gender != null){
+                            $('.gender_line').css({'border-color': 'rgba(203,54,56,0)'});
+                            //添加司机ajax_addDriver_POST
+                            //发出(data)：邮箱email, 司机姓名name, 工号id, 电话phone, 线路line, 性别gender
+                            //接收(json)：ifsuccess:0(失败),1(成功)
+                            var data= {email:add_email,name:add_name,id:add_id,phone:add_phone,line:add_line,gender:add_gender};
+                            console.log(data);
+                            console.log("AddDriverAjax");
+                            $.ajax({
+                                url: "/IBDS/addDriver", //后台请求数据
+                                dataType: "json",
+                                data:JSON.stringify(data),
+                                type: "post",
+                                success: function (msg) {
+                                    console.log("AddDriverAjax:Success!");
+                                    console.log(msg);
+                                    if(msg.ifsuccess == '1'){
+                                        location.reload();
+                                    }else {
+                                        alert("添加司机失败");
+                                    }
+                                },
+                                error: function (msg) {
+                                    console.log("AddDriverAjax:Error!");
+                                    console.log(msg);
+                                    alert("请求失败，请重试");
                                 }
-                            },
-                            error: function (msg) {
-                                console.log("AddDriverAjax:Error!");
-                                console.log(msg);
-                                alert("请求失败，请重试");
-                            }
-                        });
+                            });
+                        }else {
+                            $('.gender_line').css({'border-color': '#cb3638'});
+                            $('.gender_line').shake(2, 10, 400);
+                        }
                     }else {
-                        $('.gender_line').css({'border-color': '#cb3638'});
-                        $('.gender_line').shake(2, 10, 400);
+                        $('#add_line').css({'border-color': '#cb3638'});
+                        $('#add_line').shake(2, 10, 400);
                     }
                 }else {
-                    $('#add_line').css({'border-color': '#cb3638'});
-                    $('#add_line').shake(2, 10, 400);
+                    $('#add_phone').css({'border-color': '#cb3638'});
+                    $('#add_phone').shake(2, 10, 400);
                 }
             }else {
-                $('#add_phone').css({'border-color': '#cb3638'});
-                $('#add_phone').shake(2, 10, 400);
+                $('#add_id').css({'border-color': '#cb3638'});
+                $('#add_id').shake(2, 10, 400);
             }
         }else {
-            $('#add_id').css({'border-color': '#cb3638'});
-            $('#add_id').shake(2, 10, 400);
+            $('#add_name').css({'border-color': '#cb3638'});
+            $('#add_name').shake(2, 10, 400);
         }
     }else {
-        $('#add_name').css({'border-color': '#cb3638'});
-        $('#add_name').shake(2, 10, 400);
+        $('#add_email').css({'border-color': '#cb3638'});
+        $('#add_email').shake(2, 10, 400);
     }
 }
 

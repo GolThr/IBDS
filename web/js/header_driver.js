@@ -6,8 +6,8 @@ document.writeln("<div class=\"default_header\">\n" +
     "            </div>\n" +
     "            <div class=\"default_func_line\">\n" +
     "                <ul class=\"default_func\">\n" +
-    "                    <li id=\"driver_query\" onclick=\"location.href='/IBDS/manager_upload.html'\">发车查询</li>\n" +
-    "                    <li id=\"driver_mine\" onclick=\"location.href='/IBDS/manager_mine.html'\">个人中心</li>\n" +
+    "                    <li id=\"driver_query\" onclick=\"location.href='/IBDS/diver_upload.html'\">发车查询</li>\n" +
+    "                    <li id=\"driver_mine\" onclick=\"location.href='/IBDS/diver_mine.html'\">个人中心</li>\n" +
     "                </ul>\n" +
     "            </div>\n" +
     "            <div class=\"default_user_body\">\n" +

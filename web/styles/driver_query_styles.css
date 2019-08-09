@@ -93,7 +93,7 @@ body{
     position: fixed;
     bottom: 20px;
     right: 0;
-    z-index: 100;
+    z-index: 101;
 }
 
 .driver_func_item{

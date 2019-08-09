@@ -106,9 +106,9 @@ function onCompleteBtn() {
             if(register_pwd == register_repwd){
                 $('#register_repwd').css({'border-color': 'rgba(203,54,56,0)'});
                 //注册ajax_register_POST
-                //发出(data)：常用邮箱email, 公司名称cp_name, 公司地址cp_address, 公司电话cp_phone, 用户名username, 密码password
+                //发出(data)：常用邮箱email, 公司名称cp_name, 公司地址cp_address, 公司电话cp_phone, 用户名username, 密码password, 性别gender
                 //接收(json)：ifsuccess:0(失败),1(成功)
-                var data= {email:register_email,cp_name:register_cp_name,cp_address:register_cp_address,cp_phone:register_cp_phone,username:register_username,password:register_pwd};
+                var data= {email:register_email,cp_name:register_cp_name,cp_address:register_cp_address,cp_phone:register_cp_phone,username:register_username,password:register_pwd, cp_gender:register_gender};
                 console.log(data);
                 console.log("RegisterAjax");
                 $.ajax({
