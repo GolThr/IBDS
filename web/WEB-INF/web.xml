@@ -75,6 +75,16 @@
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ModifyManagerInforServlet</servlet-name>
+        <servlet-class>servlet.ModifyManagerInforServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModifyManagerInforServlet</servlet-name>
+        <url-pattern>/modifyManagerInfo</url-pattern>
+    </servlet-mapping>
+
+
 
 
 
