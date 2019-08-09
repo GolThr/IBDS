@@ -28,8 +28,6 @@ function init() {
             console.log("InitDriversAjax:Error!");
             console.log(msg);
             alert("请求失败，请重试");
-            msgs = [{driver_email:"1344006993@qq.com",driver_id:"198006",driver_name:"不知道",driver_gender:"男",driver_phone:"17852651283",driver_line:"2号线"}];
-            renderingLists(msgs);
         }
     });
 }

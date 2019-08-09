@@ -33,13 +33,13 @@
 
 <!--    func_float-->
     <div class="driver_func_phone_content" style="display: none;" onmouseover="onFuncPhone()" onmouseleave="outFuncPhone()">
-        <span class="driver_func_phone">某主管<br>17852651073</span>
+        <span id="company_phone" class="driver_func_phone">某主管<br>17852651073</span>
         <img src="images/ic_arrow.png" style="width: 7px;height: auto;" onclick=""/>
     </div>
     <div class="driver_func_signin_content" style="display: none;" onmouseover="onFuncSignIn()" onmouseleave="outFuncsignIn()">
         <div class="driver_func_signin">
             <span class="driver_func_signin_title">累计签到<span class="driver_func_signin_days">108</span>天</span>
-            <a class="driver_func_signin_link" href="">立即签到</a>
+            <a class="driver_func_signin_link" onclick="doSignUp()">立即签到</a>
         </div>
         <img src="images/ic_arrow.png" style="width: 7px;height: auto;" onclick=""/>
     </div>
@@ -47,71 +47,85 @@
         <div class="driver_func_note">
             <span>留言(200字以内)</span>
             <textarea class="driver_func_note_info" maxlength="200"></textarea>
-            <a class="driver_func_note_send" href="">发送</a>
+            <a class="driver_func_note_send" onclick="doPostNotes()">发送</a>
         </div>
         <img src="images/ic_arrow.png" style="margin-top: 80px;width: 7px;height: auto;" onclick=""/>
     </div>
 
     <div class="driver_query_body" style="position: relative;">
         <div class="driver_query_top">
-            <button class="main_btn_style driver_query_print">打印</button>
+            <button class="main_btn_style driver_query_print" onclick="doPrint()">打印</button>
             <div class="driver_query_right_btn_line">
                 <div class="drop_down_list_content" style="margin-right: 20px" onclick="$('.drop_down_list_body').slideToggle();">
                     <span class="drop_down_list_title">查看所有</span>
                     <img src="images/ic_arrow_down.png" onclick="" style="width: 13px;height: 13px;margin-left: 10px;"/>
                 </div>
-                <button class="main_btn_style driver_query_save">保存到本地</button>
+                <button class="main_btn_style driver_query_save" onclick="doSave()">保存到本地</button>
             </div>
         </div>
 
         <div class="drop_down_list_body" style="display: none;">
             <ul>
-                <li onclick="$('.drop_down_list_title').text('查看所有');$('.drop_down_list_body').slideUp();">查看所有</li>
-                <li onclick="$('.drop_down_list_title').text('仅看自己');$('.drop_down_list_body').slideUp();">仅看自己</li>
+                <li onclick="$('.drop_down_list_title').text('查看所有');$('.drop_down_list_body').slideUp();onFilterTable('all');">查看所有</li>
+                <li onclick="$('.drop_down_list_title').text('仅看自己');$('.drop_down_list_body').slideUp();onFilterTable('self');">仅看自己</li>
             </ul>
         </div>
 
-        <span class="table_head">2019年8月5日&nbsp;&nbsp;1号线&nbsp;发车时间表</span>
+        <!--startprint-->
+        <span class="table_head"><span id="table_date">2019年8月5日</span>&nbsp;&nbsp;<span id="table_line">1号线</span>&nbsp;发车时间表</span>
 
         <div class="data_list_body driver_list_body">
-            <table class="data_list driver_list" style="border-collapse:separate; border-spacing:0px 10px;">
+            <table class="data_list time_table_list" style="border-collapse:separate; border-spacing:0px 10px;">
                 <tr>
                     <td>司机姓名</td>
                     <td>发车时间</td>
                 </tr>
-                <tr>
-                    <td>张三</td>
-                    <td>17:15</td>
-                </tr>
-                <tr>
-                    <td>李四</td>
-                    <td>17:15</td>
-                </tr>
-                <tr>
-                    <td>王五</td>
-                    <td>17:15</td>
-                </tr>
-                <tr>
-                    <td>赵六</td>
-                    <td>17:15</td>
-                </tr>
-                <tr>
-                    <td>李七</td>
-                    <td>17:15</td>
-                </tr>
-                <tr>
-                    <td>孙八</td>
-                    <td>17:15</td>
-                </tr>
-                <tr>
-                    <td>周九</td>
-                    <td>17:15</td>
-                </tr>
-                <tr>
-                    <td>吴十</td>
-                    <td>17:15</td>
-                </tr>
+<!--                <tr>-->
+<!--                    <td>张三</td>-->
+<!--                    <td>17:15</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>李四</td>-->
+<!--                    <td>17:15</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>王五</td>-->
+<!--                    <td>17:15</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>赵六</td>-->
+<!--                    <td>17:15</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>李七</td>-->
+<!--                    <td>17:15</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>孙八</td>-->
+<!--                    <td>17:15</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>周九</td>-->
+<!--                    <td>17:15</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>吴十</td>-->
+<!--                    <td>17:15</td>-->
+<!--                </tr>-->
             </table>
+        </div>
+    </div>
+    <!--endprint-->
+
+    <!--dialog-->
+    <div class="dialog_content dialog_content_process" style="display: none;" onclick="dialogBack()">
+        <!--tips-->
+        <div class="dialog_pop dialog_pop_tips" style="display: none;height: 12rem;width: 28rem;">
+            <span class="dialog_header"></span>
+            <span class="dialog_title dialog_title_tips">更改成功</span>
+            <div class="dialog_btn_line">
+                <button class="main_btn_style dialog_btn_tips" onclick="dialogBack()" style="width: 70px;">知道了</button>
+            </div>
         </div>
     </div>
 
