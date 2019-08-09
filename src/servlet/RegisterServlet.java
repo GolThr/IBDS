@@ -6,15 +6,18 @@ import factory.DAOFactory;
 import utils.GetRequestJsonUtils;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "RegisterServlet")
+public class RegisterServlet extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
 
-    public LoginServlet() {
+    public RegisterServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,46 +40,28 @@ public class LoginServlet extends HttpServlet {
         //
         JSONObject json = GetRequestJsonUtils.getRequestJsonObject(request);
         System.out.println("json:"+json);
-        //
         System.out.println("getJson:OK");
-        String Email = json.getString("email");
-        String password = json.getString("password");
-        int isLogin = 0;
 
-        //数据库查询
+        String Email = json.getString("email");
+        String Company = json.getString("cp_name");
+        String Address =json.getString("cp_address");
+        int Tel = json.getInteger("cp_phone");
+        String Username =json.getString("username");
+        String Password = json.getString("password");
+        int status=0;
+        boolean flag = false;
+
         try{
-            user= DAOFactory.getUserDaoInstance().findUserById(Email);
-            System.out.println("添加成功！");
-            if (user.getPassword() != null) {
-                if (user.getPassword().equals(password)) {
-                    isLogin = 1;
-                    System.out.println("登录成功,islogin:");
-          //          DAOFactory.getDriverDaoInstance().hasLogin(email);
-                } else {
-                    isLogin = 0;
-                    System.out.println("登录失败,islogin:");
-                }
-            }else {
-                isLogin = 2;
-                System.out.println("该用户未注册，请先注册！");
-            }
-        } catch (Exception var9) {
-            System.out.println("DataBaseQueryError!!数据库查询错误。。。");
+          flag=DAOFactory.getUserDaoInstance().addUser(Email,Company,Address,Tel,Username,Password,status);
+        }catch (Exception var9){
+            System.out.println("DataBaseQueryError!!数据库添加错误。。。");
         }
 
-        //返回JSON数据
         JSONObject object = new JSONObject();
-        object.put("password", user.getPassword());
-        object.put("username",user.getUsername());
-        object.put("avatar",user.getAvatar());
-        object.put("gender",user.getSex());
-        object.put("phone",user.getTel());
-        object.put("email",user.getEmail());
-        object.put("company",user.getCompany());
-        object.put("address",user.getAddress());
-        object.put("ifsuccess", isLogin);
-        object.put("user_type",user.getStatus());
+        object.put("ifsuccess",flag);
         System.out.println(object);
         response.getWriter().print(object);
+
     }
+
 }

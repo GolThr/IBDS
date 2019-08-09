@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 
 public class DBConnection {
     private static final String Driver = "com.mysql.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/db_infocheck?useSSL=false";
+    private static final String URL = "jdbc:mysql://localhost:3306/bussystem?useSSL=false";
     private static final String USER = "root";
-    private static final String PASSWORD = "1344006993";
+    private static final String PASSWORD = "123456";
     private Connection conn = null;
 
     public DBConnection() throws Exception{
