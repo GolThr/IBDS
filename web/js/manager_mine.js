@@ -108,6 +108,11 @@ function onModifyInfo(){
     }
 }
 
+$('.mine_logout').click(function (e) {
+    sessionStorage.removeItem("user_info");
+    location.href = '/IBDS/login.html';
+});
+
 $("#manager_menu_personal").click(function (e) {
     $("#manager_menu_personal").css({'background':'rgba(125, 197, 193, 0.1)'});
     $("#manager_menu_message").css({'background':'rgba(125, 197, 193, 0)'});
