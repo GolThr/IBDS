@@ -120,6 +120,7 @@ $("#manager_menu_personal").click(function (e) {
     $(".manager_mine_personal_page").fadeIn(100);
     $(".manager_mine_message_page").hide();
     $(".manager_mine_changepwd_page").hide();
+    initManagerInfo();
 });
 
 $("#manager_menu_message").click(function (e) {
@@ -129,7 +130,103 @@ $("#manager_menu_message").click(function (e) {
     $(".manager_mine_personal_page").hide();
     $(".manager_mine_message_page").fadeIn(100);
     $(".manager_mine_changepwd_page").hide();
+
+    //查看留言ajax_initNotes_POST
+    //发出(data)：
+    //接收(jsonArray)：发布用户author, 发布用户头像author_avatar, 发布时间publish_time(时间格式示例：2019-08-05), 留言内容notes_content
+    console.log("InitNotesAjax");
+    $.ajax({
+        url: "/IBDS/initNotes", //后台请求数据
+        type: "post",
+        success: function (msg) {
+            console.log("InitNotesAjax:Success!");
+            console.log(msg);
+            $(".manager_mine_message_page").html("");
+            renderingNotes(msg);
+        },
+        error: function (msg) {
+            console.log("InitNotesAjax:Error!");
+            console.log(msg);
+            alert("请求失败，请重试");
+        }
+    });
 });
+
+function renderingNotes(msg){
+    for(var i in msg){
+        $(".manager_mine_message_page").append('<div class="mine_card_item">\n' +
+            '                    <div class="mine_card_item_top">\n' +
+            '                        <div>\n' +
+            '                            <img class="author_head" src="'+msg[i].author_avatar+'" onclick=""/>\n' +
+            '                            <span class="author_name">'+msg[i].author+'</span>\n' +
+            '                        </div>\n' +
+            '                        <span class="publish_time">'+msg[i].publish_time+'</span>\n' +
+            '                    </div>\n' +
+            '                    <span class="mine_card_item_body">'+msg[i].notes_content+'</span>\n' +
+            '                </div>');
+    }
+}
+
+function onChangePWD(){
+    var origin_pwd = $.trim($('#origin_pwd').val());
+    var new_pwd = $.trim($('#new_pwd').val());
+    var verify_pwd = $.trim($('#verify_pwd').val());
+    if(origin_pwd.length >= 6 && origin_pwd.length <= 16){
+        $('#origin_pwd').css({'border-color': 'rgba(203,54,56,0)'});
+        if(new_pwd.length >= 6 && new_pwd.length <= 16){
+            $('#new_pwd').css({'border-color': 'rgba(203,54,56,0)'});
+            if(verify_pwd === new_pwd){
+                $('#verify_pwd').css({'border-color': 'rgba(203,54,56,0)'});
+                //修改密码ajax_changePWD_POST
+                //发出(data)：邮箱email, 原密码origin_pwd, 新密码new_pwd
+                //接收(json)：ifsuccess:0(失败),1(成功)
+                var data= {email:user_info.email,origin_pwd:origin_pwd,new_pwd:verify_pwd};
+                console.log(data);
+                console.log("ChangePWDAjax");
+                $.ajax({
+                    url: "/IBDS/changePWD", //后台请求数据
+                    dataType: "json",
+                    data:JSON.stringify(data),
+                    type: "post",
+                    success: function (msg) {
+                        console.log("ChangePWDAjax:Success!");
+                        console.log(msg);
+                        if(msg.ifsuccess == '1'){
+                            showTip("密码修改成功！");
+                        }else {
+                            showTip("密码修改失败！");
+                        }
+                    },
+                    error: function (msg) {
+                        console.log("ChangePWDAjax:Error!");
+                        console.log(msg);
+                        alert("请求失败，请重试");
+                        if(msg.ifsuccess == '1'){
+                            showTip("密码修改成功！");
+                        }else {
+                            showTip("密码修改失败！");
+                        }
+                    }
+                });
+            }else {
+                $('#verify_pwd').css({'border-color': '#cb3638'});
+                $('#verify_pwd').shake(2, 10, 400);
+            }
+        }else {
+            $('#new_pwd').css({'border-color': '#cb3638'});
+            $('#new_pwd').shake(2, 10, 400);
+        }
+    }else {
+        $('#origin_pwd').css({'border-color': '#cb3638'});
+        $('#origin_pwd').shake(2, 10, 400);
+    }
+}
+
+function showTip(msg){
+    $('.dialog_content').fadeIn('fast');
+    $('.dialog_pop_tips').fadeIn('fast');
+    $('.dialog_title_tips').text(msg);
+}
 
 $("#manager_menu_changepwd").click(function (e) {
     $("#manager_menu_personal").css({'background':'rgba(125, 197, 193, 0)'});

@@ -19,3 +19,5 @@ manager_drivers.js
 manager_mine.js
 1. 修改头像ajax_changeAvatar_POST
 2. 修改信息ajax_modifyManagerInfo_POST
+3. 查看留言ajax_initNotes_POST
+4. 修改密码ajax_changePWD_POST
