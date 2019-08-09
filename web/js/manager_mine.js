@@ -15,6 +15,106 @@ function init() {
     $(".manager_mine_personal_page").show();
     $(".manager_mine_message_page").hide();
     $(".manager_mine_changepwd_page").hide();
+    initManagerInfo();
+}
+
+function initManagerInfo(){
+    //初始化信息ajax_initManagerInfo_POST
+    //发出(data)：
+    //接收(json)：ifsuccess:0(失败),1(成功), 用户名username, 性别gender, 手机号phone, 邮箱email, 公交公司company, 地址address
+        console.log("InitManagerInfo");
+    $.ajax({
+        url: "/IBDS/initManagerInfo", //后台请求数据
+        type: "post",
+        success: function (msg) {
+            console.log("InitManagerInfo:Success!");
+            console.log(msg);
+            if(msg.ifsuccess == '1'){
+                setManagerInfo(msg);
+            }
+        },
+        error: function (msg) {
+            console.log("InitManagerInfo:Error!");
+            console.log(msg);
+            alert("请求失败，请重试");
+            msga = {username:'沈长盈',gender:'男',phone:'17852651111',email:'12341651515@163.com',company:'啥公交有限责任公司',address:'山东省日照市'};
+            setManagerInfo(msga);
+        }
+    });
+}
+
+function setManagerInfo(msg){
+    $('#manager_username').val(msg.username);
+    if(msg.gender == '男'){
+        $('#input_gender_male').attr('checked','checked');
+        $('#input_gender_female').removeAttr('checked');
+    }else{
+        $('#input_gender_male').removeAttr('checked');
+        $('#input_gender_female').attr('checked','checked');
+    }
+    $('#manager_phone').val(msg.phone);
+    $('#manager_company').val(msg.company);
+    $('#manager_address').val(msg.address);
+}
+
+function onModifyInfo(){
+    var manager_username = $.trim($('#manager_username').val());
+    var manager_gender = $.trim($(".gender_line input[name=\"input_gender\"]:checked").val());
+    var manager_phone = $.trim($('#manager_phone').val());
+    var manager_email = $.trim($('#manager_email').val());
+    var manager_company = $.trim($('#manager_company').val());
+    var manager_address = $.trim($('#manager_address').val());
+    if(manager_username != '' || manager_username != null){
+        $('#manager_username').css({'border-color': 'rgba(203,54,56,0)'});
+        if(manager_gender != '' || manager_username != null){
+            $('#manager_gender').css({'border-color': 'rgba(203,54,56,0)'});
+            if(manager_phone != '' || manager_username != null){
+                $('#manager_phone').css({'border-color': 'rgba(203,54,56,0)'});
+                if(manager_company != '' || manager_username != null){
+                    $('#manager_company').css({'border-color': 'rgba(203,54,56,0)'});
+                    if(manager_address != '' || manager_username != null){
+                        $('#manager_address').css({'border-color': 'rgba(203,54,56,0)'});
+                        //修改信息ajax_modifyManagerInfo_POST
+                        //发出(data)：用户名username, 性别gender, 手机号phone, 邮箱email, 公交公司company, 地址address
+                        //接收(json)：ifsuccess:0(失败),1(成功)
+                        var data= {username:manager_username,gender:manager_gender,phone:manager_phone,email:manager_email,company:manager_company,address:manager_address};
+                        console.log(data);
+                        console.log("ModifyManagerInfoAjax");
+                        $.ajax({
+                            url: "/IBDS/modifyManagerInfo", //后台请求数据
+                            dataType: "json",
+                            data:JSON.stringify(data),
+                            type: "post",
+                            success: function (msg) {
+                                console.log("LoginAjax:Success!");
+                                console.log(msg);
+                            },
+                            error: function (msg) {
+                                console.log("LoginAjax:Error!");
+                                console.log(msg);
+                                alert("请求失败，请重试");
+                            }
+                        });
+                    }else {
+                        $('#manager_address').css({'border-color': '#cb3638'});
+                        $('#manager_address').shake(2, 10, 400);
+                    }
+                }else {
+                    $('#manager_company').css({'border-color': '#cb3638'});
+                    $('#manager_company').shake(2, 10, 400);
+                }
+            }else {
+                $('#manager_phone').css({'border-color': '#cb3638'});
+                $('#manager_phone').shake(2, 10, 400);
+            }
+        }else {
+            $('#manager_gender').css({'border-color': '#cb3638'});
+            $('#manager_gender').shake(2, 10, 400);
+        }
+    }else {
+        $('#manager_username').css({'border-color': '#cb3638'});
+        $('#manager_username').shake(2, 10, 400);
+    }
 }
 
 $("#manager_menu_personal").click(function (e) {

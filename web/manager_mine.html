@@ -39,7 +39,7 @@
             <div class="mine_pages_body manager_mine_personal_page" style="height: 565px;display: none;">
                 <div class="mine_pages_body_line">
                     <span>用&nbsp;&nbsp;户&nbsp;&nbsp;名</span>
-                    <input class="default_input mine_pages_input" type="text" value="Manager"/>
+                    <input id="manager_username" class="default_input mine_pages_input" type="text" value="Manager"/>
                 </div>
                 <div class="mine_pages_body_line">
                     <span>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</span>
@@ -56,20 +56,21 @@
                 </div>
                 <div class="mine_pages_body_line">
                     <span>手&nbsp;&nbsp;机&nbsp;&nbsp;号</span>
-                    <input class="default_input mine_pages_input" type="text" value="17852651073"/>
+                    <input id="manager_phone" class="default_input mine_pages_input" type="text" value="17852651073"/>
                 </div>
                 <div class="mine_pages_body_line">
-                    <span>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</span><input class="default_input mine_pages_input" type="text" value="80005@haogj.com"/>
+                    <span>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</span>
+                    <input id="manager_email" class="default_input mine_pages_input" type="text" value="80005@haogj.com" readonly="readonly"/>
                 </div>
                 <div class="mine_pages_body_line">
                     <span>公交公司</span>
-                    <input class="default_input mine_pages_input" type="text" value="好公交"/>
+                    <input id="manager_company" class="default_input mine_pages_input" type="text" value="好公交"/>
                 </div>
                 <div class="mine_pages_body_line">
                     <span>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</span>
-                    <input class="default_input mine_pages_input" type="text" value="山东省"/>
+                    <input id="manager_address" class="default_input mine_pages_input" type="text" value="山东省"/>
                 </div>
-                <button class="main_btn_style" style="width: 100px;margin-top: 30px;">确认修改</button>
+                <button class="main_btn_style" style="width: 100px;margin-top: 30px;" onclick="onModifyInfo()">确认修改</button>
             </div>
             <div class="mine_pages_card_body manager_mine_message_page" style="display: none;">
                 <div class="mine_card_item">
