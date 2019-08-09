@@ -19,7 +19,10 @@
     <div class="manager_drivers_body">
         <div class="manager_drivers_top">
             <button class="main_btn_style manger_drivers_add">添加</button>
-            <input class="default_input manager_drivers_search" type="text" placeholder="搜索"/>
+            <div class="search_line">
+                <input class="default_input manager_drivers_search" type="text" placeholder="搜索"/>
+                <img class="manager_drivers_search_btn" src="images/ic_search.png" onclick="onSearchBtn()"/>
+            </div>
         </div>
 
         <div class="data_list_body driver_list_body">
@@ -50,13 +53,22 @@
         <div class="dialog_pop dialog_pop_add_driver" style="display: none;">
             <span class="dialog_header"></span>
             <span class="dialog_title">添加司机</span>
-            <input id="Dno" class="default_input" type="text" placeholder="姓名">
-            <input id="Dname" class="default_input" type="text" placeholder="工号">
-            <input id="Dauthor" class="default_input" type="text" placeholder="电话" maxlength="11" oninput="value=value.replace(/[^\d]/g,'')">
-            <input id="Dpress" class="default_input" type="text" placeholder="线路">
-            <input id="Dprice" class="default_input" type="text" placeholder="性别">
+            <input id="add_name" class="default_input" type="text" placeholder="姓名">
+            <input id="add_id" class="default_input" type="text" placeholder="工号">
+            <input id="add_phone" class="default_input" type="text" placeholder="电话" maxlength="11" oninput="value=value.replace(/[^\d]/g,'')">
+            <input id="add_line" class="default_input" type="text" placeholder="线路" style="margin-bottom: 10px;">
+            <div class="gender_line">
+                <div class="gender_line_item">
+                    <input id="input_gender_male" name="input_gender" type="radio" value="男"/>
+                    <label for="input_gender_male" style="margin: 0 50px 0 0">男</label>
+                </div>
+                <div class="gender_line_item">
+                    <input id="input_gender_female" name="input_gender" type="radio" value="女"/>
+                    <label for="input_gender_female">女</label>
+                </div>
+            </div>
             <div class="dialog_btn_line">
-                <button class="main_btn_style dialog_btn_add_driver">添加</button>
+                <button class="main_btn_style dialog_btn_add_driver" onclick="onAddDriverBtn()">添加</button>
             </div>
         </div>
         <div class="dialog_pop dialog_ensure_delete" style="display: none;z-index: 10">

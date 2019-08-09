@@ -1,12 +1,14 @@
 var user_info;
+var upload_type = '0';
 function init() {
     user_info = JSON.parse(sessionStorage.getItem("user_info"));
     console.log(user_info);
-    if(user_info == null || user_info.ifsuccess != "true"){
+    if(user_info == null || user_info.ifsuccess != "1"){
         location.href = "index.html";
-    }else if(user_info.user_type != '0'){
+    }if(user_info.user_type != '0'){
         location.href = "index.html";
     }else{
+        $(".manager_head").attr("src", user_info.avatar);
         $('.manager_name').text(user_info.username);
     }
     $("#manager_upload").css({'border-bottom':'rgba(255, 255, 255, 1) solid 5px'});
@@ -21,13 +23,15 @@ function onUploadFile() {
     //创建FormData对象，初始化为form表单中的数据。需要添加其他数据可使用formData.append("property", "value");
     var formData = new FormData();
     formData.append("file", $('#file_input')[0].files[0]);
+    formData.append("upload_type", upload_type);
     console.log($('#file_input')[0].files[0]);
     console.log(formData);
-    //ajax_1_POST
-    //发出(FormData)：formDta:File(文件对象)
+    console.log("UploadFileAjax");
+    //上传文件ajax_uploadFile_POST
+    //发出(formData)：formDta:file(文件对象), type(参数类型，0公交数据，1司机信息)
     //接收(json)：ifsuccess:0(失败),1(上传成功)
     $.ajax({
-        url: "http://localhost:63342/upload/",
+        url: "/IBDS/uploadFiles",
         type: "POST",
         data: formData,
         xhr: function () { //获取ajaxSettings中的xhr对象，为它的upload属性绑定progress事件的处理函数
@@ -38,12 +42,15 @@ function onUploadFile() {
             }
             return myXhr; //xhr对象返回给jQuery使用
         },
-        success: function (result) {
-            if(!result.ifsuccess){
+        success: function (msg) {
+            console.log("UploadFileAjax:Success");
+            if(msg.ifsuccess == '1'){
+                console.log("成功");
+            }else {
                 alert('内部错误，请联系管理员！');
             }
         },
-        error: function(result){
+        error: function(msg){
             console.log("error!");
             alert("请求失败，请重试");
         },
@@ -64,6 +71,7 @@ function onUploadBusData(){
     $(".dialog_btn_upload_file").remove("dialog_btn_upload_file_clickable");
     $('#progress').css('width', "0");
     canUpload = false;
+    upload_type = '0';
 }
 
 function onUploadDriverData(){
@@ -74,6 +82,7 @@ function onUploadDriverData(){
     $(".dialog_btn_upload_file").remove("dialog_btn_upload_file_clickable");
     $('#progress').css('width', "0");
     canUpload = false;
+    upload_type = '1';
 }
 
 //绑定所有type=file的元素的onchange事件的处理函数

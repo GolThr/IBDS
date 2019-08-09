@@ -241,7 +241,7 @@ $('.login_btn').click(function (e) {
                 //可以登录
                 //登录ajax_login_POST
                 //发出(data)：常用邮箱email, 密码password
-                //接收(json)：ifsuccess:0(密码错误),1(成功),2(未注册); 用户类型user_type(管理员0, 司机1), 用户名username, 性别gender, 手机号phone, 邮箱email, 公交公司company, 地址address
+                //接收(json)：ifsuccess:0(密码错误),1(成功),2(未注册); 用户类型user_type(管理员0, 司机1), 头像avatar, 用户名username, 性别gender, 手机号phone, 邮箱email, 公交公司company, 地址address
                 var data= {email:login_email,password:login_pwd};
                 console.log(data);
                 console.log("LoginAjax");
@@ -257,7 +257,7 @@ $('.login_btn').click(function (e) {
                         if(msg.ifsuccess == "1"){
                             if(msg.user_type == '0'){
                                 location.href = "manager_upload.html";
-                            }else if(mag.user_type == '1'){
+                            }else if(msg.user_type == '1'){
                                 location.href = "driver_query.html";
                             }
                         }else if(msg.ifsuccess == "0"){
@@ -309,7 +309,7 @@ $('.login_btn').click(function (e) {
 function getVerifyCode() {
     forgot_email = $.trim($('#forgot_email').val());
     if(checkEmail(forgot_email) && (forgot_email != '' && forgot_email != null)){
-//获取验证码ajax_getVerifyCode_POST
+        //获取验证码ajax_getVerifyCode_POST
         //发出(data)：邮箱email
         //接收(json)：验证码verifyCode;
         var data= {email:forgot_email};

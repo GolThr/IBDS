@@ -30,7 +30,9 @@
                     <li id="manager_menu_personal">个人资料</li>
                     <li id="manager_menu_message">查看留言</li>
                     <li id="manager_menu_changepwd">修改密码</li>
+                    <li id="manager_menu_changeavatar" onclick="$('#file_input').click()">修改头像</li>
                 </ul>
+                <input id="file_input" type="file" style="display: none;"/>
             </div>
         </div>
         <div class="mine_pages_content">
@@ -115,6 +117,18 @@
                     <input class="default_input mine_pages_input" type="password" placeholder="请确认密码"/>
                 </div>
                 <button class="main_btn_style" style="width: 100px;margin-top: 30px;">确认修改</button>
+            </div>
+        </div>
+    </div>
+
+    <!--dialog-->
+    <div class="dialog_content dialog_content_process" style="display: none;" onclick="dialogBack()">
+        <!--tips-->
+        <div class="dialog_pop dialog_pop_tips" style="display: none;">
+            <span class="dialog_header"></span>
+            <span class="dialog_title dialog_title_tips">用户已存在</span>
+            <div class="dialog_btn_line">
+                <button class="main_btn_style dialog_btn_tips" onclick="dialogBack()">知道了</button>
             </div>
         </div>
     </div>
