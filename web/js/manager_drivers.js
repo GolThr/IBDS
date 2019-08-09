@@ -185,7 +185,7 @@ function onEnsureBtnClicked() {
 //修改数据
 function onChangeData(email, data_type, data_new) {
     //修改数据ajax_modifyData_POST
-    //发出(data)：司机邮箱email, 数据类型data_type(name:姓名, gender:性别, phone:电话, line:线路), 新数据data_new
+    //发出(data)：司机邮箱email,新数据data_new
     //接收(json)：ifsuccess:0(失败),1(成功)
     var data= {email:email,data_type:data_type,data_new:data_new};
     console.log(data);

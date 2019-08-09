@@ -57,6 +57,16 @@
         <url-pattern>/deleteBook</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ModifyDriverServlet</servlet-name>
+        <servlet-class>servlet.ModifyDriverServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModifyDriverServlet</servlet-name>
+        <url-pattern>/modifyData</url-pattern>
+    </servlet-mapping>
+
+
 
 
 </web-app>

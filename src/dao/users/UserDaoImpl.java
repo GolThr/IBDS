@@ -35,6 +35,21 @@ public class UserDaoImpl {
         return flag;
     }
 
+//管理员修改司机路线
+    public boolean ModifyDriverRoute(String email, String NewRoute) throws Exception {
+        System.out.println("ModifyDriverRoute:...");
+        boolean flag = false;
+        String sql = "UPDATE user_table SET route = ? WHERE Email = ?";
+        this.pstmt = this.conn.prepareStatement(sql);
+        this.pstmt.setString(1, NewRoute);
+        this.pstmt.setString(2, email);
+        System.out.println("ForgetPwd-sql:" + sql);
+        if (this.pstmt.executeUpdate() > 0) {
+            flag = true;
+        }
+        this.pstmt.close();
+        return flag;
+    }
 
 
 
