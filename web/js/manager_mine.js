@@ -27,6 +27,7 @@ function initManagerInfo(){
         $('#input_gender_male').removeAttr('checked');
         $('#input_gender_female').attr('checked','checked');
     }
+    $('#manager_email').val(user_info.email);
     $('#manager_phone').val(user_info.phone);
     $('#manager_company').val(user_info.company);
     $('#manager_address').val(user_info.address);
