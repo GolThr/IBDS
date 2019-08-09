@@ -18,6 +18,25 @@ public class UserDaoImpl {
         this.dbc = new DBConnection();
         this.conn = this.dbc.getConnection();
     }
+    //管理员删除司机信息
+    public boolean DeleteEmail(String stu_id) throws Exception {
+        System.out.println("DeleteEmail:...");
+        boolean flag = false;
+        String sql = "DELETE FROM  user_table WHERE Email = ?";
+        this.pstmt = this.conn.prepareStatement(sql);
+        this.pstmt.setString(1, stu_id);
+        System.out.println("ModifyStuInfo-sql:"+sql);
+
+        if(this.pstmt.executeUpdate() > 0){
+            flag = true;
+        }
+        this.pstmt.close();
+
+        return flag;
+    }
+
+
+
 
     //显示查询
     public List<User> findUserByStatus(int Status) throws Exception {
