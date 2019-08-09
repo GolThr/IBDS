@@ -21,8 +21,8 @@ function init() {
         type: "post",
         success: function (msg) {
             console.log("InitDriversAjax:Success!");
-            console.log(msg);
-            renderingLists(msg);
+            console.log(JSON.parse(msg));
+            renderingLists(JSON.parse(msg));
         },
         error: function (msg) {
             console.log("InitDriversAjax:Error!");
@@ -33,7 +33,6 @@ function init() {
         }
     });
 }
-
 
 function checkEmail(email) {
     var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;

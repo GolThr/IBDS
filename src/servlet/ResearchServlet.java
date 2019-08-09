@@ -66,7 +66,6 @@ public class ResearchServlet extends HttpServlet {
         for(User user : userList){
             JSONObject object = new JSONObject();
             object.put("driver_email",user.getEmail());
-
             object.put("driver_id", user.getWorknumber());
             object.put("driver_name", user.getCompany());
             object.put("driver_gender", user.getSex());
