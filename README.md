@@ -18,5 +18,4 @@ manager_drivers.js
 
 manager_mine.js
 1. 修改头像ajax_changeAvatar_POST
-2. 初始化信息ajax_initManagerInfo_POST
-3. 修改信息ajax_modifyManagerInfo_POST
+2. 修改信息ajax_modifyManagerInfo_POST
