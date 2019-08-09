@@ -51,17 +51,57 @@ public class UserDaoImpl {
         return flag;
     }
 
+    //管理员搜索司机信息
+    public List<User> findUserBySearch(String key_word) throws Exception {
+        System.out.println("FindUserBySearch:...");
+
+        String sql = "SELECT * FROM user_table WHERE worknumber LIKE ? or route LIKE ? or username LIKE ? or tel like ?";
+
+        this.pstmt = this.conn.prepareStatement(sql);
+        this.pstmt.setString(1,"%"+key_word+"%");
+        this.pstmt.setString(2,"%"+key_word+"%");
+        this.pstmt.setString(3,"%"+key_word+"%");
+        this.pstmt.setString(4,"%"+key_word+"%");
+        ResultSet rs = this.pstmt.executeQuery();
+        System.out.println("--findAllUser:executeOK");
+        List<User> UserList = new ArrayList<>();
+        while (rs.next()){
+            System.out.println("456");
+            User user=new User();
+            if(rs.getInt("Status")==1){
+                user.setEmail(rs.getString("Email"));
+                user.setPassword(rs.getString("Password"));
+                user.setAddress(rs.getString("Address"));
+                user.setAvatar(rs.getString("Avatar"));
+                user.setUsername(rs.getString("Username"));
+                user.setCompany(rs.getString("Company"));
+                user.setSex(rs.getString("Sex"));
+                user.setWorknumber(rs.getString("Worknumber"));
+                user.setTel(rs.getString("Tel"));
+                user.setRoute(rs.getString("route"));
+                UserList.add(user);
+            }
+
+            System.out.println("--searchAlluser:whileEnd_OK");
+
+        }
+        this.pstmt.close();
+
+
+        System.out.println("FindUserBySearch:OK");
+        return UserList;
+    }
+
+
+
 
 
     //显示查询
     public List<User> findUserByStatus(int Status) throws Exception {
         System.out.println("DaoFindUserByStatus:...");
-
         String sql = "SELECT * FROM user_table WHERE Status=?";
-
         this.pstmt = this.conn.prepareStatement(sql);
         this.pstmt.setInt(1,Status);
-
         ResultSet rs = this.pstmt.executeQuery();
         System.out.println("--findAllBook:executeOK");
 
@@ -86,8 +126,6 @@ public class UserDaoImpl {
             System.out.println(user.getCompany());
         }
         this.pstmt.close();
-
-
         System.out.println("FindUserByStatus:OK");
         return UserList;
     }

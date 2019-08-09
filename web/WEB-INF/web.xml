@@ -40,11 +40,11 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>SearchServlet</servlet-name>
-        <servlet-class>servlet.SearchServlet</servlet-class>
+        <servlet-name>ResearchServlet</servlet-name>
+        <servlet-class>servlet.ResearchServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>SearchServlet</servlet-name>
+        <servlet-name>ResearchServlet</servlet-name>
         <url-pattern>/initDrivers</url-pattern>
     </servlet-mapping>
 
@@ -64,6 +64,15 @@
     <servlet-mapping>
         <servlet-name>ModifyDriverServlet</servlet-name>
         <url-pattern>/modifyData</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>servlet.SearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
     </servlet-mapping>
 
 

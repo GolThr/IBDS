@@ -302,11 +302,9 @@ function onSearchBtn() {
             success: function (msg) {
                 console.log("SearchAjax:Success!");
                 console.log(msg);
-                if(msg.ifsuccess == '1'){
-                    $(".driver_list").html("");
-                    renderingListHead();
-                    renderingLists(msg);
-                }
+                $(".driver_list").html("");
+                renderingListHead();
+                renderingLists(msg);
             },
             error: function (msg) {
                 console.log("SearchAjax:Error!");
