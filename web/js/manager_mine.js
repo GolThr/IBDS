@@ -15,10 +15,10 @@ function init() {
     $(".manager_mine_personal_page").show();
     $(".manager_mine_message_page").hide();
     $(".manager_mine_changepwd_page").hide();
-    setManagerInfoSession();
+    initManagerInfo();
 }
 
-function setManagerInfoSession(){
+function initManagerInfo(){
     $('#manager_username').val(user_info.username);
     if(user_info.gender == '男'){
         $('#input_gender_male').attr('checked','checked');
@@ -30,6 +30,16 @@ function setManagerInfoSession(){
     $('#manager_phone').val(user_info.phone);
     $('#manager_company').val(user_info.company);
     $('#manager_address').val(user_info.address);
+}
+
+function updateSession(data) {
+    user_info.username = data.username;
+    user_info.gender = data.gender;
+    user_info.phone = data.phone;
+    user_info.company = data.company;
+    user_info.address = data.address;
+    sessionStorage.setItem("user_info", JSON.stringify(user_info));
+    location.reload();
 }
 
 function onModifyInfo(){
@@ -63,11 +73,17 @@ function onModifyInfo(){
                             success: function (msg) {
                                 console.log("LoginAjax:Success!");
                                 console.log(msg);
+                                if(msg.ifsuccess == '1'){
+                                    updateSession(data);
+                                }else {
+                                    alert("内部错误，请联系管理员！！！");
+                                }
                             },
                             error: function (msg) {
                                 console.log("LoginAjax:Error!");
                                 console.log(msg);
                                 alert("请求失败，请重试");
+                                updateSession(data);
                             }
                         });
                     }else {
