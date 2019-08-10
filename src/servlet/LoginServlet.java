@@ -76,6 +76,7 @@ public class LoginServlet extends HttpServlet {
         object.put("address",user.getAddress());
         object.put("ifsuccess", isLogin);
         object.put("user_type",user.getStatus());
+        object.put("work_number",user.getWorknumber());
         System.out.println(object);
         response.getWriter().print(object);
     }
