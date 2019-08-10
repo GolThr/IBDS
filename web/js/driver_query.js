@@ -200,10 +200,10 @@ function onFilterTable(type) {
         type: "post",
         success: function (msg) {
             console.log("FilterTimeTableAjax:Success!");
-            console.log(msg);
+            console.log(JSON.parse(msg));
             $(".time_table_list").html("");
-            renderingListHead(msg);
-            renderingLists(msg);
+            renderingListHead(JSON.parse(msg));
+            renderingLists(JSON.parse(msg));
         },
         error: function (msg) {
             console.log("FilterTimeTableAjax:Error!");
