@@ -217,6 +217,7 @@ public class UserDaoImpl {
             user.setTel(rs.getString("tel"));
             user.setRoute(rs.getString("route"));
             user.setStatus(rs.getInt("status"));
+            user.setWorknumber(rs.getString("Worknumber"));
         }
         this.pstmt.close();
         this.dbc.close();
