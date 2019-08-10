@@ -204,7 +204,7 @@ function onShowTodayLogs(date) {
                 renderingLogsHead();
                 renderingLogs(msg);
             }else {
-                showTip('未查询到信息，请确保查询时间在一个月之内！')
+                showTip('未查询到信息，请确保查询时间在一个月之内！');
             }
         },
         error: function (msg) {
@@ -238,6 +238,13 @@ function renderingLogs(msg){
             '                            <td>'+msg[i].start_time+'</td>\n' +
             '                        </tr>');
     }
+}
+
+function renderingNonePage() {
+    $(".driver_mine_notes_page").append('<div class="item_none" style="display: none;">\n' +
+        '                    <img src="images/pic_none.png" onclick="" style="width: 200px;height: auto;"/>\n' +
+        '                    <span style="width: 100%;text-align: center;margin-top: 30px;">未查询到信息</span>\n' +
+        '                </div>');
 }
 
 function renderingNotes(msg){
@@ -328,7 +335,11 @@ $("#driver_menu_notes").click(function (e) {
             console.log("InitNotesAjax:Success!");
             console.log(msg);
             $(".driver_mine_notes_page").html("");
-            renderingNotes(msg);
+            if(msg[0] != null){
+                renderingNotes(msg);
+            }else {
+                renderingNonePage();
+            }
         },
         error: function (msg) {
             console.log("InitNotesAjax:Error!");
