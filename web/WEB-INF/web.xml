@@ -93,7 +93,14 @@
         <url-pattern>/changePWD</url-pattern>
     </servlet-mapping>
 
-
+    <servlet>
+        <servlet-name>getVerifyCode</servlet-name>
+        <servlet-class>servlet.GetVerifyCodeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getVerifyCode</servlet-name>
+        <url-pattern>/getVerifyCode</url-pattern>
+    </servlet-mapping>
 
 
 </web-app>

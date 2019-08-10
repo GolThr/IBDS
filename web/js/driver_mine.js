@@ -17,7 +17,31 @@ function init() {
     $(".driver_mine_personal_page").hide();
     $(".driver_mine_notes_page").hide();
     $('.calendar').hide();
+
+    initManagerInfo();
 }
+
+function initManagerInfo(){
+    $('.mine_user_head').attr('src', user_info.avatar);
+    $('.mine_user_name').text(user_info.username);
+    $('#driver_username').val(user_info.username);
+    if(user_info.gender == '男'){
+        $('#input_gender_male').attr('checked','checked');
+        $('#input_gender_female').removeAttr('checked');
+    }else{
+        $('#input_gender_male').removeAttr('checked');
+        $('#input_gender_female').attr('checked','checked');
+    }
+    $('#driver_email').val(user_info.email);
+    $('#driver_phone').val(user_info.phone);
+    $('#driver_company').val(user_info.company);
+    $('#driver_address').val(user_info.address);
+}
+
+$('.mine_logout').click(function (e) {
+    sessionStorage.removeItem("user_info");
+    location.href = '/IBDS/login.html';
+});
 
 $("#driver_menu_personal").click(function (e) {
     $('.calendar').hide();

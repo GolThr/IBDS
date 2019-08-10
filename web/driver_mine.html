@@ -28,34 +28,27 @@
             </div>
             <div class="mine_menu_body">
                 <ul>
-                    <li id="driver_menu_logs">行车日志</li>
+                    <li id="driver_menu_logs">本月行车日志</li>
                     <li id="driver_menu_personal">个人资料</li>
                     <li id="driver_menu_changepwd">修改密码</li>
                     <li id="driver_menu_notes">已发布留言</li>
+                    <li id="manager_menu_changeavatar" onclick="$('#file_input').click()">修改头像</li>
                 </ul>
+                <input id="file_input" type="file" style="display: none;"/>
             </div>
             <div id="calendar" class="calendar"></div>
             <script type="text/javascript" src="js/calendar.js"></script>
         </div>
         <div class="mine_pages_content">
             <div class="mine_pages_body driver_mine_personal_page" style="height: 565px;display: none;">
+                <div id="driver_id" class="mine_pages_body_line">
+                    <span>工&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</span><input class="default_input mine_pages_input" type="text" value="80005"/>
+                </div>
                 <div class="mine_pages_body_line">
                     <span>用&nbsp;&nbsp;户&nbsp;&nbsp;名</span>
-                    <input class="default_input mine_pages_input" type="text" value="Manager"/>
+                    <input id="driver_username" class="default_input mine_pages_input" type="text" value="Manager"/>
                 </div>
-                <div class="mine_pages_body_line">
-                    <span>手&nbsp;&nbsp;机&nbsp;&nbsp;号</span>
-                    <input class="default_input mine_pages_input" type="text" value="17852651073"/>
-                </div>
-                <div class="mine_pages_body_line">
-                    <span>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</span>
-                    <input class="default_input mine_pages_input" type="text" value="山东省"/>
-                </div>
-                <div class="mine_pages_body_line">
-                    <span>公交公司</span>
-                    <input class="default_input mine_pages_input" type="text" value="好公交"/>
-                </div>
-                <div class="mine_pages_body_line">
+                <div id="driver_gender" class="mine_pages_body_line">
                     <span>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</span>
                     <div class="gender_line">
                         <div class="gender_line_item">
@@ -69,7 +62,20 @@
                     </div>
                 </div>
                 <div class="mine_pages_body_line">
-                    <span>工&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</span><input class="default_input mine_pages_input" type="text" value="80005"/>
+                    <span>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</span>
+                    <input id="driver_email" class="default_input mine_pages_input" type="text" value="80005@haogj.com" readonly="readonly"/>
+                </div>
+                <div id="driver_phone" class="mine_pages_body_line">
+                    <span>手&nbsp;&nbsp;机&nbsp;&nbsp;号</span>
+                    <input class="default_input mine_pages_input" type="text" value="17852651073"/>
+                </div>
+                <div id="driver_company" class="mine_pages_body_line">
+                    <span>公交公司</span>
+                    <input class="default_input mine_pages_input" type="text" value="好公交"/>
+                </div>
+                <div id="driver_address" class="mine_pages_body_line">
+                    <span>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</span>
+                    <input class="default_input mine_pages_input" type="text" value="山东省"/>
                 </div>
                 <button class="main_btn_style" style="width: 100px;margin-top: 30px;">确认修改</button>
             </div>
