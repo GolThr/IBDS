@@ -19,6 +19,8 @@ function init() {
 }
 
 function initManagerInfo(){
+    $('.mine_user_head').attr('src', user_info.avatar);
+    $('.mine_user_name').text(user_info.username);
     $('#manager_username').val(user_info.username);
     if(user_info.gender == '男'){
         $('#input_gender_male').attr('checked','checked');
@@ -269,10 +271,11 @@ function onUploadFile() {
     //创建FormData对象，初始化为form表单中的数据。需要添加其他数据可使用formData.append("property", "value");
     var formData = new FormData();
     formData.append("file", $('#file_input')[0].files[0]);
+    formData.append("email", user_info.email);
     console.log(formData);
     console.log("ChangeAvatarAjax");
     //修改头像ajax_changeAvatar_POST
-    //发出(formData)：formDta:file(文件对象)
+    //发出(formData)：formDta:file(文件对象), 邮箱email
     //接收(json)：ifsuccess:0(失败),1(上传成功), 头像地址相对路径avatar
     $.ajax({
         url: "/IBDS/changeManagerAvatar",
