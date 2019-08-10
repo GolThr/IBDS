@@ -241,7 +241,7 @@ function renderingLogs(msg){
 }
 
 function renderingNonePage() {
-    $(".driver_mine_notes_page").append('<div class="item_none" style="display: none;">\n' +
+    $(".driver_mine_notes_page").append('<div class="item_none">\n' +
         '                    <img src="images/pic_none.png" onclick="" style="width: 200px;height: auto;"/>\n' +
         '                    <span style="width: 100%;text-align: center;margin-top: 30px;">未查询到信息</span>\n' +
         '                </div>');
