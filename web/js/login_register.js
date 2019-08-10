@@ -306,13 +306,13 @@ $('.login_btn').click(function (e) {
     }
 })
 
-function getVerifyCode() {
-    forgot_email = $.trim($('#forgot_email').val());
-    if(checkEmail(forgot_email) && (forgot_email != '' && forgot_email != null)){
+function getVerifyCode(jqnode) {
+    email = $.trim($('#'+jqnode).val());
+    if(checkEmail(email) && (email != '' && email != null)){
         //获取验证码ajax_getVerifyCode_POST
         //发出(data)：邮箱email
         //接收(json)：验证码verifyCode;
-        var data= {email:forgot_email};
+        var data= {email:email};
         console.log(data);
         console.log("GetVerifyCodeAjax");
         $.ajax({
@@ -321,12 +321,12 @@ function getVerifyCode() {
             data:JSON.stringify(data),
             type: "post",
             success: function (msg) {
-                console.log("LoginAjax:Success!");
+                console.log("GetVerifyCodeAjax:Success!");
                 console.log(msg);
                 verifyCode = msg.verifyCode;
             },
             error: function (msg) {
-                console.log("LoginAjax:Error!");
+                console.log("GetVerifyCodeAjax:Error!");
                 console.log(msg);
                 alert("请求失败，请重试");
             }

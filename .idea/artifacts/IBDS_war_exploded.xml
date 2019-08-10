@@ -40,6 +40,9 @@
           <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/tomcat-i18n-zh-CN.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/catalina-storeconfig.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/mysql-connector-java-5.1.46.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/mail.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/activation.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/commons-email-1.4.jar" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="IBDS/web/Web" />

@@ -28,3 +28,10 @@ manager_mine.js
 2. 修改信息ajax_modifyManagerInfo_POST
 3. 查看留言ajax_initNotes_POST
 4. 修改密码ajax_changePWD_POST
+
+driver_query.js
+1. 初始化界面信息ajax_initDriverDays_POST
+2. 筛选发车表ajax_filterTimeTable_POST
+3. 发车表保存到本地ajax_saveTimeTable_POST
+4. 签到ajax_signUp_POST
+5. 留言ajax_postNotes_POST
