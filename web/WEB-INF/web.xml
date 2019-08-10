@@ -92,6 +92,14 @@
         <servlet-name>ModifyPwdServlet</servlet-name>
         <url-pattern>/changePWD</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>MessageServlet</servlet-name>
+        <servlet-class>servlet.MessageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MessageServlet</servlet-name>
+        <url-pattern>/initNotes</url-pattern>
+    </servlet-mapping>
 
 
 

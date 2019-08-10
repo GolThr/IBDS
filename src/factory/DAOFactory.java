@@ -1,6 +1,7 @@
 package factory;
 
 
+import dao.users.MessageDaoImpl;
 import dao.users.UserDaoImpl;
 
 public class DAOFactory {
@@ -11,5 +12,9 @@ public class DAOFactory {
     public static UserDaoImpl getUserDaoInstance() throws Exception{
         System.out.println("getInstance:OK");
         return new UserDaoImpl();
+    }
+    public static MessageDaoImpl getMessageDaoInstance() throws Exception{
+        System.out.println("getInstance-Message:OK");
+        return new MessageDaoImpl();
     }
 }
