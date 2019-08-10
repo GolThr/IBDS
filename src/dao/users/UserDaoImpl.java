@@ -1,5 +1,6 @@
 package dao.users;
 
+import bean.SignUp;
 import bean.User;
 import db.DBConnection;
 
@@ -8,6 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
+import static javax.swing.UIManager.getString;
 
 public class UserDaoImpl {
     private DBConnection dbc = null;
@@ -263,6 +266,33 @@ public class UserDaoImpl {
         }
         this.pstmt.close();
         return flag;
+    }
+
+    //司机签到
+    public SignUp SignUp(String Email) throws Exception {
+        System.out.println("ForgetPassword:...");
+        boolean flag = false;
+        SignUp signup=new SignUp();
+        String sql = "UPDATE signup_table SET Times=Times+1 WHERE Email = ?";
+        this.pstmt = this.conn.prepareStatement(sql);
+        this.pstmt.setString(1, Email);
+        System.out.println("SignUp-sql:" + sql);
+
+
+        String sql1 = "SELECT Times FROM signup_table WHERE Email=?";
+        this.pstmt = this.conn.prepareStatement(sql1);
+        this.pstmt.setString(1,Email);
+        ResultSet rs = this.pstmt.executeQuery();
+
+        if(rs.next()){
+            System.out.println("123");
+            signup.setTimes(rs.getString("Times"));
+        }
+        this.pstmt.close();
+        this.dbc.close();
+
+        System.out.println("DaoFindUserById:OK");
+        return signup;
     }
 }
 

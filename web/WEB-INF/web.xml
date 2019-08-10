@@ -110,5 +110,13 @@
         <url-pattern>/getVerifyCode</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>SignUpServlet</servlet-name>
+        <servlet-class>servlet.SignUpServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SignUpServlet</servlet-name>
+        <url-pattern>/signUp</url-pattern>
+    </servlet-mapping>
 
 </web-app>
