@@ -35,3 +35,7 @@ driver_query.js
 3. 发车表保存到本地ajax_saveTimeTable_POST
 4. 签到ajax_signUp_POST
 5. 留言ajax_postNotes_POST
+
+driver_mine.js
+1. 修改信息ajax_modifyDriverInfo_POST
+2. 查询某天行车日志ajax_todayLogs_POST
