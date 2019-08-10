@@ -241,7 +241,7 @@ $('.login_btn').click(function (e) {
                 //可以登录
                 //登录ajax_login_POST
                 //发出(data)：常用邮箱email, 密码password
-                //接收(json)：ifsuccess:0(密码错误),1(成功),2(未注册); 用户类型user_type(管理员0, 司机1), 头像avatar, 用户名username, 性别gender, 手机号phone, 邮箱email, 公交公司company, 地址address
+                //接收(json)：ifsuccess:0(密码错误),1(成功),2(未注册); 用户类型user_type(管理员0, 司机1), 头像avatar, 用户名username, 性别gender, 手机号phone, 邮箱email, 公交公司company, 地址address, 工号work_number
                 var data= {email:login_email,password:login_pwd};
                 console.log(data);
                 console.log("LoginAjax");
