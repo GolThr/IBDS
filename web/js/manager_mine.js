@@ -144,9 +144,9 @@ $("#manager_menu_message").click(function (e) {
         type: "post",
         success: function (msg) {
             console.log("InitNotesAjax:Success!");
-            console.log(msg);
+            console.log(JSON.parse(msg));
             $(".manager_mine_message_page").html("");
-            renderingNotes(msg);
+            renderingNotes(JSON.parse(msg));
         },
         error: function (msg) {
             console.log("InitNotesAjax:Error!");
