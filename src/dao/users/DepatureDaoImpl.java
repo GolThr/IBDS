@@ -1,6 +1,7 @@
 package dao.users;
 
 import bean.Depature;
+import bean.Message;
 import bean.User;
 import db.DBConnection;
 
@@ -68,5 +69,31 @@ public class DepatureDaoImpl {
         this.pstmt.close();
         System.out.println("FindUserByStatus:OK");
         return depatureList;
+    }
+
+    //司机查看行车日志
+    public List<Depature> ResearchLog(String Email,String Date ) throws Exception {
+        System.out.println("DaoFindUserByStatus:...");
+        String sql = "SELECT * FROM user_table,departure_table WHERE user_table.Email=departure_table.email and departure_table.Email=? and Date=?";
+        this.pstmt = this.conn.prepareStatement(sql);
+        this.pstmt.setString(1, Email);
+        this.pstmt.setString(2, Date);
+        ResultSet rs = this.pstmt.executeQuery();
+        System.out.println("--ResearchLog:executeOK");
+        List<Depature> MessageList = new ArrayList<>();
+        while (rs.next()){
+            System.out.println("123");
+            Depature message=new Depature();
+            message.setTime(rs.getString("Time"));
+            message.setUesrname(rs.getString("Username"));
+            MessageList.add(message);
+            System.out.println("--ResearchLog:whileEnd_OK");
+            System.out.println("time"+message.getTime());
+            System.out.println("name"+message.getUesrname());
+
+        }
+        this.pstmt.close();
+        System.out.println("Research:OK");
+        return MessageList;
     }
 }

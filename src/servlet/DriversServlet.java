@@ -49,7 +49,7 @@ public class DriversServlet extends HttpServlet {
         try{
             signUp= DAOFactory.getSignupDaoInstance().findsignbyemail(Email,company);
             System.out.println("添加成功！");
-            if (signUp.getRoute()!=null) {
+            if (signUp.getName()!=null) {
                 ifsuccess="1";
                System.out.println("成功获取到");
             }else {
@@ -62,7 +62,7 @@ public class DriversServlet extends HttpServlet {
         // 公司管理员姓名admin, 公司电话phone, 是否签到if_signup(未签到0, 已签到1), 签到天数signup_days
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
        String date=df.format(new Date());
-       if(signUp.getDate().equals(date)){
+       if(signUp.getDate()!=null&&signUp.getDate().equals(date)){
            ifsignup="1";
        }else{
            ifsignup="0";
@@ -75,7 +75,7 @@ public class DriversServlet extends HttpServlet {
         object.put("today_date",date);
         object.put("admin",signUp.getName());
         object.put("phone",signUp.getTel());
-        object.put("if_signup",signUp);
+        object.put("if_signup",ifsignup);
         object.put("ifsuccess",ifsuccess);
         object.put("signup_days",signUp.getTimes());
 

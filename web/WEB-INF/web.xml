@@ -151,4 +151,13 @@
         <servlet-name>DriverInformationServlet</servlet-name>
         <url-pattern>/modifyDriverInfo</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogServlet</servlet-name>
+        <servlet-class>servlet.LogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogServlet</servlet-name>
+        <url-pattern>/todayLogs</url-pattern>
+    </servlet-mapping>
 </web-app>
