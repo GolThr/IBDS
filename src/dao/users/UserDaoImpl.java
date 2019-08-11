@@ -13,7 +13,6 @@ public class UserDaoImpl {
     private DBConnection dbc = null;
     private Connection conn = null;
     private PreparedStatement pstmt = null;
-    private PreparedStatement pstmt1 = null;
 
     public UserDaoImpl() throws Exception {
         this.dbc = new DBConnection();

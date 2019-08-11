@@ -23,7 +23,7 @@ public class DepatureDaoImpl {
     //初始化司机查询线路页面    下拉列表（查看所有）根据传来的Company和Route选择对应的信息,对应的是FilterTimeTableServlet
     public List<Depature> FilterTimeAll(String Company, String Route) throws Exception {
         System.out.println("DaoAll:...");
-        String sql = "SELECT * FROM user_table,departure_table WHERE Route =? and Company=? and user_table.email=departure_table.email";
+        String sql = "SELECT * FROM user_table,departure_table WHERE Route =? and Company=? and Date=CURRENT_DATE() and user_table.email=departure_table.email ";
         this.pstmt = this.conn.prepareStatement(sql);
         this.pstmt.setString(1,Route);
         this.pstmt.setString(2,Company);
@@ -47,7 +47,7 @@ public class DepatureDaoImpl {
     //初始化司机查询线路页面    下拉列表（仅看自己）根据传来的Email选择对应的信息,对应的是FilterTimeTableServlet
     public List<Depature> FilterTimeSelf(String Email) throws Exception {
         System.out.println("DaoSelf:...");
-        String sql = "SELECT * FROM user_table,departure_table  WHERE departure_table.Email=? and user_table.email=departure_table.email";
+        String sql = "SELECT * FROM user_table,departure_table  WHERE departure_table.Email=? and Date=CURRENT_DATE()and user_table.email=departure_table.email";
         this.pstmt = this.conn.prepareStatement(sql);
         this.pstmt.setString(1,Email);
         ResultSet rs = this.pstmt.executeQuery();
