@@ -77,7 +77,7 @@ function renderingLists(msg) {
             '                    <td>'+msg[i].driver_id+'</td>' +
             '                    <td><input class="'+msg[i].driver_email+'" type="text" value="'+msg[i].driver_name+'"/></td>' +
             '                    <td><input class="'+msg[i].driver_email+'" type="text" value="'+msg[i].driver_gender+'"/></td>' +
-            '                    <td class="change_able"><input class="'+msg[i].driver_email+'" type="text" value="'+msg[i].driver_phone+'" onblur="onInputPhoneBlur(this)" onfocus="onInputPhoneFocus(this)"/></td>' +
+            '                    <td><input class="'+msg[i].driver_email+'" type="text" value="'+msg[i].driver_phone+'"/></td>' +
             '                    <td class="change_able"><input class="'+msg[i].driver_email+'" type="text" value="'+msg[i].driver_line+'" onblur="onInputLineBlur(this)" onfocus="onInputLineFocus(this)"/></td>' +
             '                    <td><img class="'+msg[i].driver_email+'" src="images/ic_delete_inline.png" onclick="onDeleteInline(this)"/></td>' +
             '                </tr>');
@@ -160,7 +160,6 @@ function onInputLineBlur(obj) {
     }
 }
 //////////////
-
 
 var driver_delete;
 function onDeleteInline(obj) {
