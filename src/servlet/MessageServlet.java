@@ -36,35 +36,64 @@ public class MessageServlet extends HttpServlet {
         System.out.println("getJson...");
 
         System.out.println("getJson:OK");
+        JSONObject json = GetRequestJsonUtils.getRequestJsonObject(req);
+        String Type = json.getString("init_type");
         List<Message> messageList=new ArrayList<>();
         //数据库查询
-        try {
+        if(Type.equals("all")){
+            try {
+                messageList= DAOFactory.getMessageDaoInstance().findAllUsers();
+                System.out.println("查找了！");
+                if (messageList.size()>0) {
 
-           messageList= DAOFactory.getMessageDaoInstance().findAllUsers();
-            System.out.println("查找了！");
-            if (messageList.size()>0) {
-
-                System.out.println("查找留言成功,islogin:");
-            } else {
-                System.out.println("没有人");
+                    System.out.println("查找留言成功,islogin:");
+                } else {
+                    System.out.println("没有人");
+                }
+            } catch (Exception var9) {
+                System.out.println("DataBaseQueryError!!数据库查询错误。。。");
             }
-        } catch (Exception var9) {
-            System.out.println("DataBaseQueryError!!数据库查询错误。。。");
+
+            //接收(jsonArray)：发布用户author, 发布用户头像author_avatar, 发布时间publish_time(时间格式示例：2019-08-05), 留言内容notes_content
+            JSONArray JsonArray = new JSONArray();
+            for(Message message : messageList){
+                JSONObject object = new JSONObject();
+                object.put("author", message.getName());
+                object.put("author_avatar", message.getAvater());
+                object.put("publish_time", message.getDate());
+                object.put("notes_content",message.getMessage());
+
+                JsonArray.add(object);
+            }
+            System.out.println(JsonArray);
+            resp.getWriter().print(JsonArray);
+        }else{
+            try {
+                messageList= DAOFactory.getMessageDaoInstance().findSelfMessage(Type);
+                System.out.println("查找了！");
+                if (messageList.size()>0) {
+
+                    System.out.println("查找留言成功,islogin:");
+                } else {
+                    System.out.println("没有人");
+                }
+            } catch (Exception var9) {
+                System.out.println("DataBaseQueryError!!数据库查询错误。。。");
+            }
+
+            //接收(jsonArray)：发布用户author, 发布用户头像author_avatar, 发布时间publish_time(时间格式示例：2019-08-05), 留言内容notes_content
+            JSONArray JsonArray = new JSONArray();
+            for(Message message : messageList){
+                JSONObject object = new JSONObject();
+                object.put("author", message.getName());
+                object.put("author_avatar", message.getAvater());
+                object.put("publish_time", message.getDate());
+                object.put("notes_content",message.getMessage());
+
+                JsonArray.add(object);
+            }
+            System.out.println(JsonArray);
+            resp.getWriter().print(JsonArray);
         }
-
-        //接收(jsonArray)：发布用户author, 发布用户头像author_avatar, 发布时间publish_time(时间格式示例：2019-08-05), 留言内容notes_content
-        JSONArray JsonArray = new JSONArray();
-        for(Message message : messageList){
-            JSONObject object = new JSONObject();
-            object.put("author", message.getName());
-            object.put("author_avatar", message.getAvater());
-            object.put("publish_time", message.getDate());
-            object.put("notes_content",message.getMessage());
-
-            JsonArray.add(object);
-        }
-        System.out.println(JsonArray);
-        resp.getWriter().print(JsonArray);
-
     }
 }
