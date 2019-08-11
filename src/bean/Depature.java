@@ -1,11 +1,22 @@
 package bean;
 
+import java.util.Date;
+
 public class Depature {
     private String email;
     private String route;
     private String company;
     private String time;
     private String uesrname;
+    private Date data;
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
 
     public String getUesrname() {
         return uesrname;

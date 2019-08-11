@@ -143,5 +143,12 @@
         <url-pattern>/initDriverDays</url-pattern>
     </servlet-mapping>
 
-
+    <servlet>
+        <servlet-name>DriverInformationServlet</servlet-name>
+        <servlet-class>servlet.DriverInformation</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DriverInformationServlet</servlet-name>
+        <url-pattern>/modifyDriverInfo</url-pattern>
+    </servlet-mapping>
 </web-app>
