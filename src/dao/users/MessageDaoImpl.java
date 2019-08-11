@@ -48,6 +48,22 @@ public class MessageDaoImpl {
         System.out.println("FindALLuser:OK");
         return MessageList;
     }
+    //添加留言信息
+    public  boolean addMessage(String Email,String Message) throws Exception{
+        System.out.println("AddMessage:....");
+        String sql="INSERT INTO message_table (Email,Message,Date) values(?,?,CURRENT_DATE())";
+        this.pstmt=this.conn.prepareStatement(sql);
+        this.pstmt.setString(1, Email);
+        this.pstmt.setString(2, Message);
+        System.out.println("--AddMessage:executeOK");
+        boolean flag=false;
+        System.out.println("ForgetPwd-sql:" + sql);
+        if (this.pstmt.executeUpdate() > 0) {
+            flag = true;
+        }
+        this.pstmt.close();
+        return  flag;
+    }
 
 
 
