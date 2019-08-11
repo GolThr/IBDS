@@ -270,7 +270,7 @@ function showTip(msg){
 
 $('.mine_logout').click(function (e) {
     sessionStorage.removeItem("user_info");
-    location.href = '/IBDS/login.html';
+    location.href = '/IBDS/index.html';
 });
 
 $("#driver_menu_personal").click(function (e) {
