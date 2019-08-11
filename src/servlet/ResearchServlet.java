@@ -41,6 +41,7 @@ public class ResearchServlet extends HttpServlet {
         System.out.println("getJson...");
         //
         JSONObject json = GetRequestJsonUtils.getRequestJsonObject(request);
+        String Comany=json.getString("company");
         System.out.println("json:"+json);
         System.out.println("getJson:OK");
 
@@ -49,7 +50,7 @@ public class ResearchServlet extends HttpServlet {
 
         //数据库查询
         try {
-            userList = DAOFactory.getUserDaoInstance().findUserByStatus(1);
+            userList = DAOFactory.getUserDaoInstance().findUserByStatus(1,Comany);
             System.out.println("查找了！");
             if (userList.size()>0) {
                 System.out.println("查找成功,islogin:");
@@ -66,7 +67,6 @@ public class ResearchServlet extends HttpServlet {
         for(User user : userList){
             JSONObject object = new JSONObject();
             object.put("driver_email",user.getEmail());
-
             object.put("driver_id", user.getWorknumber());
             object.put("driver_name", user.getUsername());
             object.put("driver_gender", user.getSex());

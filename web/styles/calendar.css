@@ -68,10 +68,11 @@
 .calendar-week .item,
 .calendar-date .item {
   float: left;
-  width: 28px;
-  height: 28px;
-  line-height: 28px;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
   text-align: center;
+  border: #fff solid 1px;
 }
 .calendar-week {
   padding-bottom: 6px;
@@ -85,6 +86,7 @@
   border-radius: 50%;
   cursor: pointer;
   font-size: 14px;
+  border: #fff solid 1px;
 }
 .calendar-date .item:hover,
 .calendar-date .item-curMonth:hover {
@@ -97,6 +99,7 @@
 .calendar-date .item-curDay:hover {
   color: #fff;
   background-color: #7dc5c1;
+  border: #7dc5c1 solid 1px;
 }
 .calendar-today {
   display: none;

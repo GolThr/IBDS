@@ -75,7 +75,7 @@ function onModifyInfo(){
                             data:JSON.stringify(data),
                             type: "post",
                             success: function (msg) {
-                                console.log("LoginAjax:Success!");
+                                console.log("ModifyManagerInfoAjax:Success!");
                                 console.log(msg);
                                 if(msg.ifsuccess == '1'){
                                     updateSession(data);
@@ -84,7 +84,7 @@ function onModifyInfo(){
                                 }
                             },
                             error: function (msg) {
-                                console.log("LoginAjax:Error!");
+                                console.log("ModifyManagerInfoAjax:Error!");
                                 console.log(msg);
                                 alert("请求失败，请重试");
                                 showTip("信息修改失败！");
@@ -112,6 +112,13 @@ function onModifyInfo(){
     }
 }
 
+function renderingNonePage() {
+    $(".driver_mine_notes_page").append('<div class="item_none">\n' +
+        '                    <img src="images/pic_none.png" onclick="" style="width: 200px;height: auto;"/>\n' +
+        '                    <span style="width: 100%;text-align: center;margin-top: 30px;">未查询到信息</span>\n' +
+        '                </div>');
+}
+
 $('.mine_logout').click(function (e) {
     sessionStorage.removeItem("user_info");
     location.href = '/IBDS/login.html';
@@ -136,17 +143,25 @@ $("#manager_menu_message").click(function (e) {
     $(".manager_mine_changepwd_page").hide();
 
     //查看留言ajax_initNotes_POST
-    //发出(data)：
+    //发出(data)：查看筛选init_type(全部: all, 只显示某一用户: email)
     //接收(jsonArray)：发布用户author, 发布用户头像author_avatar, 发布时间publish_time(时间格式示例：2019-08-05), 留言内容notes_content
+    var data = {init_type:'all'};
+    console.log(data);
     console.log("InitNotesAjax");
     $.ajax({
         url: "/IBDS/initNotes", //后台请求数据
+        dataType: "json",
+        data:JSON.stringify(data),
         type: "post",
         success: function (msg) {
             console.log("InitNotesAjax:Success!");
-            console.log(JSON.parse(msg));
+            console.log(msg);
             $(".manager_mine_message_page").html("");
-            renderingNotes(JSON.parse(msg));
+            if(msg[0] != null){
+                renderingNotes(msg);
+            }else {
+                renderingNonePage();
+            }
         },
         error: function (msg) {
             console.log("InitNotesAjax:Error!");
@@ -198,7 +213,7 @@ function onChangePWD(){
                         if(msg.ifsuccess == '1'){
                             showTip("密码修改成功！");
                         }else {
-                            showTip("密码修改失败！");
+                            showTip("原密码错误，密码修改失败！");
                         }
                     },
                     error: function (msg) {
@@ -286,6 +301,9 @@ function onUploadFile() {
             if(msg.ifsuccess == '1'){
                 $(".mine_user_head").attr("src", "http://localhost:8080/IBDS"+msg.avatar);
                 $(".manager_head").attr("src", "http://localhost:8080/IBDS"+msg.avatar);
+                user_info.avatar = msg.avatar;
+                sessionStorage.setItem("user_info", JSON.stringify(user_info));
+                showTip("修改头像成功！");
             }else {
                 alert('内部错误，请联系管理员！');
             }

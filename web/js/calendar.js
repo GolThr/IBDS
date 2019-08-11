@@ -1,3 +1,5 @@
+var preDate = '';
+
 // 关于月份： 在设置时要-1，使用时要+1
 $(function () {
 
@@ -183,7 +185,14 @@ $(function () {
       }
 
       this.$calendarDate_item.click(function () {
-        self.showHoverInfo($(this));
+        // self.showHoverInfo($(this));
+        var _dateStr = $(this).attr('data');
+        onShowTodayLogs(getDateStr(_dateStr));
+        if(preDate != '' && preDate != null){
+          $('.item[data='+preDate+']').css({border:'#fff solid 1px'});
+        }
+        $(this).css({border:'#7dc5c1 solid 1px'});
+        preDate = $(this).attr('data');
       });
     },
 
@@ -218,8 +227,8 @@ $(function () {
     var month = date.getMonth() + 1;
     var day = date.getDate();
 
-    month = month < 9 ? ('0' + month) : ('' + month);
-    day = day < 9 ? ('0' + day) : ('' + day);
+    month = month <= 9 ? ('0' + month) : ('' + month);
+    day = day <= 9 ? ('0' + day) : ('' + day);
 
     return year + month + day;
   };

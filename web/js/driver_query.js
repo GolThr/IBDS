@@ -166,6 +166,7 @@ function doPostNotes() {
                 console.log("PostNotesAjax:Success!");
                 console.log(msg);
                 if(msg.ifsuccess == '1'){
+                    $('.driver_func_note_info').val('');
                     showTip('发表留言成功');
                 }else {
                     showTip('内部错误，请联系管理员');

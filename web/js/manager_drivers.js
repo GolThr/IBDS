@@ -13,16 +13,20 @@ function init() {
     $("#manager_drivers").css({'border-bottom':'rgba(255, 255, 255, 1) solid 5px'});
 
     //初始化司机信息ajax_initDrivers_POST
-    //发出(data)：
+    //发出(data)：公司名称company
     //接收(jsonArray)：司机邮箱driver_email, 工号driver_id, 姓名driver_name, 性别driver_gender, 电话driver_phone, 线路driver_line
+    var data = {company:user_info.company}
+    console.log(data);
     console.log("InitDriversAjax");
     $.ajax({
         url: "/IBDS/initDrivers", //后台请求数据
+        dataType: "json",
+        data:JSON.stringify(data),
         type: "post",
         success: function (msg) {
             console.log("InitDriversAjax:Success!");
-            console.log(JSON.parse(msg));
-            renderingLists(JSON.parse(msg));
+            console.log(msg);
+            renderingLists(msg);
         },
         error: function (msg) {
             console.log("InitDriversAjax:Error!");

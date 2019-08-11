@@ -101,11 +101,12 @@ public class UserDaoImpl {
 
 
     //显示查询
-    public List<User> findUserByStatus(int Status) throws Exception {
+    public List<User> findUserByStatus(int Status,String company) throws Exception {
         System.out.println("DaoFindUserByStatus:...");
-        String sql = "SELECT * FROM user_table WHERE Status=?";
+        String sql = "SELECT * FROM user_table WHERE Status=? and company=?";
         this.pstmt = this.conn.prepareStatement(sql);
         this.pstmt.setInt(1,Status);
+        this.pstmt.setString(2,company);
         ResultSet rs = this.pstmt.executeQuery();
         System.out.println("--findAllBook:executeOK");
 
