@@ -8,13 +8,13 @@ public class Depature {
     private String company;
     private String time;
     private String uesrname;
-    private Date data;
+    private String  data;
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 

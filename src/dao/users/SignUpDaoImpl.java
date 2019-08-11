@@ -68,6 +68,7 @@ public class SignUpDaoImpl {
 
         }
         this.pstmt.close();
+        System.out.println("route是"+signUp.getRoute());
         System.out.println("--SelectSignup:executeOK");
         String sql2="SELECT * from user_table where status=0 and company=?";
         this.pstmt=this.conn.prepareStatement(sql2);
