@@ -176,6 +176,12 @@ $(function () {
 
       if (this.opts.backToday) {
         this.$backToday.bind('click', function () {
+          onShowTodayLogs(getDateStr(returnDateStr(new Date())));
+          if(preDate != '' && preDate != null){
+            $('.item[data='+preDate+']').css({border:'#fff solid 1px'});
+          }
+          $(this).css({border:'#7dc5c1 solid 1px'});
+          preDate = returnDateStr(new Date());
           if (!self.$calendarDate_item.hasClass('item-curDay')) {
             dateObj.setDate(new Date());
 
@@ -188,6 +194,7 @@ $(function () {
         // self.showHoverInfo($(this));
         var _dateStr = $(this).attr('data');
         onShowTodayLogs(getDateStr(_dateStr));
+        console.log('_dateStr:'+_dateStr);
         if(preDate != '' && preDate != null){
           $('.item[data='+preDate+']').css({border:'#fff solid 1px'});
         }
