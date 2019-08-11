@@ -55,16 +55,25 @@ function init() {
     onFilterTable('self');
 }
 
+function renderingNonePage() {
+    $(".driver_list_body").append('<div class="item_none">\n' +
+        '                    <img src="images/pic_none.png" onclick="" style="width: 200px;height: auto;"/>\n' +
+        '                    <span style="width: 100%;text-align: center;margin-top: 30px;">未查询到信息</span>\n' +
+        '                </div>');
+}
+
 function renderingListHeadInfo(msg) {
     $('#table_date').text(msg.today_date);
     $('#table_line').text(msg.line);
 }
 
 function renderingListHead(msg) {
-    $(".time_table_list").append('<tr>\n' +
+    $(".driver_list_body").append('<table class="data_list time_table_list" style="border-collapse:separate; border-spacing:0px 10px;">\n' +
+        '                <tr>\n' +
         '                    <td>司机姓名</td>\n' +
         '                    <td>发车时间</td>\n' +
-        '                </tr>');
+        '                </tr>\n' +
+        '            </table>');
 }
 
 function renderingLists(msg) {
@@ -204,9 +213,13 @@ function onFilterTable(type) {
         success: function (msg) {
             console.log("FilterTimeTableAjax:Success!");
             console.log(msg);
-            $(".time_table_list").html("");
+            $(".driver_list_body").html("");
             renderingListHead(msg);
-            renderingLists(msg);
+            if(msg[0] != null){
+                renderingLists(msg);
+            }else {
+                renderingNonePage();
+            }
         },
         error: function (msg) {
             console.log("FilterTimeTableAjax:Error!");

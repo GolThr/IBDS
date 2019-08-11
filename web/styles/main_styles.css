@@ -7,6 +7,15 @@ body{
     justify-content: center;
 }
 
+.item_none{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .default_input{
     height: 30px;
     border-radius: 5px;
@@ -127,6 +136,10 @@ input[type="radio"]{
 }
 
 .data_list_body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     padding: 0.3rem 0;
     background: #fff;
@@ -139,9 +152,14 @@ input[type="radio"]{
     text-align: center;
 }
 
+.data_list td{
+    border: 0.1rem solid rgba(125, 197, 193, 0);
+}
+
 .change_able:hover{
     border: 0.1rem solid rgba(125, 197, 193, 1);
 }
+
 .data_list img{
     width: 17px;
     height: 17px;

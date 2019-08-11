@@ -26,7 +26,13 @@ function init() {
         success: function (msg) {
             console.log("InitDriversAjax:Success!");
             console.log(msg);
-            renderingLists(msg);
+            $(".driver_list_body").html("");
+            renderingListHead();
+            if(msg[0] != null){
+                renderingLists(msg);
+            }else {
+                renderingNonePage();
+            }
         },
         error: function (msg) {
             console.log("InitDriversAjax:Error!");
@@ -34,6 +40,13 @@ function init() {
             alert("请求失败，请重试");
         }
     });
+}
+
+function renderingNonePage() {
+    $(".driver_list_body").append('<div class="item_none">\n' +
+        '                    <img src="images/pic_none.png" onclick="" style="width: 200px;height: auto;"/>\n' +
+        '                    <span style="width: 100%;text-align: center;margin-top: 30px;">未查询到信息</span>\n' +
+        '                </div>');
 }
 
 function checkEmail(email) {
@@ -62,24 +75,27 @@ function renderingLists(msg) {
     for(var i in msg){
         $(".driver_list").append('<tr>' +
             '                    <td>'+msg[i].driver_id+'</td>' +
-            '                    <td class="change_able"><input class="'+msg[i].driver_email+'" type="text" value="'+msg[i].driver_name+'" onblur="onInputNameBlur(this)" onfocus="onInputNameFocus(this)"/></td>' +
-            '                    <td class="change_able"><input class="'+msg[i].driver_email+'" type="text" value="'+msg[i].driver_gender+'" onblur="onInputGenderBlur(this)" onfocus="onInputGenderFocus(this)"/></td>' +
+            '                    <td><input class="'+msg[i].driver_email+'" type="text" value="'+msg[i].driver_name+'"/></td>' +
+            '                    <td><input class="'+msg[i].driver_email+'" type="text" value="'+msg[i].driver_gender+'"/></td>' +
             '                    <td class="change_able"><input class="'+msg[i].driver_email+'" type="text" value="'+msg[i].driver_phone+'" onblur="onInputPhoneBlur(this)" onfocus="onInputPhoneFocus(this)"/></td>' +
             '                    <td class="change_able"><input class="'+msg[i].driver_email+'" type="text" value="'+msg[i].driver_line+'" onblur="onInputLineBlur(this)" onfocus="onInputLineFocus(this)"/></td>' +
             '                    <td><img class="'+msg[i].driver_email+'" src="images/ic_delete_inline.png" onclick="onDeleteInline(this)"/></td>' +
             '                </tr>');
     }
 }
+
 //渲染表头
 function renderingListHead() {
-    $(".driver_list").append('<tr>\n' +
+    $(".driver_list_body").append('<table class="data_list driver_list" style="border-collapse:separate; border-spacing:0px 10px;">\n' +
+        '                <tr>\n' +
         '                    <td style="width: 100px;">工号</td>\n' +
         '                    <td>姓名</td>\n' +
         '                    <td>性别</td>\n' +
         '                    <td>电话</td>\n' +
         '                    <td>线路</td>\n' +
         '                    <td style="width: 50px;">删除</td>\n' +
-        '                </tr>');
+        '                </tr>\n' +
+        '            </table>');
 }
 
 //实时更改密码
@@ -304,9 +320,13 @@ function onSearchBtn() {
             success: function (msg) {
                 console.log("SearchAjax:Success!");
                 console.log(msg);
-                $(".driver_list").html("");
+                $(".driver_list_body").html("");
                 renderingListHead();
-                renderingLists(msg);
+                if(msg[0] != null){
+                    renderingLists(msg);
+                }else {
+                    renderingNonePage();
+                }
             },
             error: function (msg) {
                 console.log("SearchAjax:Error!");
