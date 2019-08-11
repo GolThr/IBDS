@@ -45,7 +45,7 @@ public class SignUpServlet extends HttpServlet {
 
         //数据库查询
         try{
-            signup=DAOFactory.getSignupDaoInstance().SignUp(Email);
+            signup=DAOFactory.getSignupDaoInstance().Signup(Email);
             ifsuccess=true;
         } catch (Exception var9) {
             System.out.println("DataBaseQueryError!!数据库修改错误。。。");

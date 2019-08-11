@@ -31,10 +31,10 @@ public class ForgetPwdServlet extends HttpServlet {
         JSONObject json = GetRequestJsonUtils.getRequestJsonObject(request);
         System.out.println("json:" + json);
         System.out.println("getJson:OK");
-        String email = json.getString("email");
-        String password = json.getString("password");
+        String Email = json.getString("email");
+        String Password = json.getString("password");
         try {
-            flag = DAOFactory.getUserDaoInstance().ForgetPwd(email, password);
+            flag = DAOFactory.getUserDaoInstance().ForgetPwd(Email, Password);
             System.out.println("密码找回成功！");
         } catch (Exception var8) {
             System.out.println("DataBaseQueryError!!数据库修改错误。。。");

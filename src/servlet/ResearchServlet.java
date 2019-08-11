@@ -41,16 +41,13 @@ public class ResearchServlet extends HttpServlet {
         System.out.println("getJson...");
         //
         JSONObject json = GetRequestJsonUtils.getRequestJsonObject(request);
-        String Comany=json.getString("company");
+        String Company=json.getString("company");
         System.out.println("json:"+json);
         System.out.println("getJson:OK");
-
-        boolean isChange = false;
         List<User> userList=new ArrayList<>();
-
         //数据库查询
         try {
-            userList = DAOFactory.getUserDaoInstance().findUserByStatus(1,Comany);
+            userList = DAOFactory.getUserDaoInstance().findUserByStatus(Company,1);
             System.out.println("查找了！");
             if (userList.size()>0) {
                 System.out.println("查找成功,islogin:");
@@ -61,8 +58,6 @@ public class ResearchServlet extends HttpServlet {
         } catch (Exception var9) {
             System.out.println("DataBaseQueryError!!数据库查询错误。。。");
         }
-
-
         JSONArray JsonArray = new JSONArray();
         for(User user : userList){
             JSONObject object = new JSONObject();

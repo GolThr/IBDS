@@ -49,7 +49,7 @@ public class DriverInformation extends HttpServlet {
         String ifsuccess="0";
         int success=0;
         try{
-            success= DAOFactory.getUserDaoInstance().ModifyManagerInfor(username,sex,tel,email,company,address);
+            success= DAOFactory.getUserDaoInstance().ModifyManagerInfor(email,tel,address,company,sex,username);
             if (success==1){
                 ifsuccess="1";
                 System.out.println("修改个人信息成功");

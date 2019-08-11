@@ -1,16 +1,14 @@
 package dao.users;
 
 import bean.Depature;
-import bean.Message;
-import bean.User;
 import db.DBConnection;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+//这里边涉及的表格为departure_table和user_table
 public class DepatureDaoImpl {
     private DBConnection dbc = null;
     private Connection conn = null;
@@ -21,7 +19,8 @@ public class DepatureDaoImpl {
         this.dbc = new DBConnection();
         this.conn = this.dbc.getConnection();
     }
-    //初始化司机查询线路页面
+
+    //初始化司机查询线路页面    下拉列表（查看所有）根据传来的Company和Route选择对应的信息,对应的是FilterTimeTableServlet
     public List<Depature> FilterTimeAll(String Company, String Route) throws Exception {
         System.out.println("DaoAll:...");
         String sql = "SELECT * FROM user_table,departure_table WHERE Route =? and Company=? and user_table.email=departure_table.email";
@@ -30,7 +29,6 @@ public class DepatureDaoImpl {
         this.pstmt.setString(2,Company);
         ResultSet rs = this.pstmt.executeQuery();
         System.out.println("--findAll:executeOK");
-
         List<Depature> depatureList = new ArrayList<>();
         while (rs.next()){
             System.out.println("123");
@@ -46,15 +44,14 @@ public class DepatureDaoImpl {
         return depatureList;
     }
 
-
-    public List<Depature> FilterTimeSelf(String Company,String Email,String Route) throws Exception {
+    //初始化司机查询线路页面    下拉列表（仅看自己）根据传来的Email选择对应的信息,对应的是FilterTimeTableServlet
+    public List<Depature> FilterTimeSelf(String Email) throws Exception {
         System.out.println("DaoSelf:...");
         String sql = "SELECT * FROM user_table,departure_table  WHERE departure_table.Email=? and user_table.email=departure_table.email";
         this.pstmt = this.conn.prepareStatement(sql);
         this.pstmt.setString(1,Email);
         ResultSet rs = this.pstmt.executeQuery();
         System.out.println("--FilterTimeSelf:executeOK");
-
         List<Depature> depatureList = new ArrayList<>();
         while (rs.next()){
             System.out.println("123");
@@ -64,14 +61,13 @@ public class DepatureDaoImpl {
             depatureList.add(depature);
             System.out.println("--FilterTimeAll:whileEnd_OK");
             System.out.println("route"+depature.getUesrname());
-
         }
         this.pstmt.close();
         System.out.println("FindUserByStatus:OK");
         return depatureList;
     }
 
-    //司机查看行车日志
+    //司机查看行车日志    根据前端传来的Email和Date,在数据库中选择相应的信息返回并显示，对应的是LogServlet
     public List<Depature> ResearchLog(String Email,String Date ) throws Exception {
         System.out.println("DaoFindUserByStatus:...");
         String sql = "SELECT * FROM user_table,departure_table WHERE user_table.Email=departure_table.email and departure_table.Email=? and Date=?";
@@ -90,7 +86,6 @@ public class DepatureDaoImpl {
             System.out.println("--ResearchLog:whileEnd_OK");
             System.out.println("time"+message.getTime());
             System.out.println("name"+message.getUesrname());
-
         }
         this.pstmt.close();
         System.out.println("Research:OK");

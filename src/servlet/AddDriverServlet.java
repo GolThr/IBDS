@@ -4,8 +4,6 @@ import bean.User;
 import com.alibaba.fastjson.JSONObject;
 import factory.DAOFactory;
 import utils.GetRequestJsonUtils;
-
-import javax.naming.Name;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,18 +31,16 @@ public class AddDriverServlet extends HttpServlet {
 
         System.out.println("servlet-addBook...");
         request.setCharacterEncoding("UTF-8");
-//        response.setHeader("content-type","text/html;charset=UTF-8");
         response.setContentType("text/html;charset=utf-8");
         User user=new User();
         // 读取请求内容
         System.out.println("getJson...");
-        //
         JSONObject json = GetRequestJsonUtils.getRequestJsonObject(request);
         System.out.println("json:"+json);
         System.out.println("getJson:OK");
 
         String Email = json.getString("email");
-        String Name = json.getString("name");
+        String Username = json.getString("name");
         String Worknumber =json.getString("id");
         String Tel = json.getString("phone");
         String Route =json.getString("line");
@@ -52,10 +48,10 @@ public class AddDriverServlet extends HttpServlet {
         int status=1;
         String Password="123456";
         boolean flag = false;
-        System.out.println(Email+" "+Name+" " + Worknumber+" "+ Tel+" "+Route+" "+Sex);
+        System.out.println(Email+" "+Username+" " + Worknumber+" "+ Tel+" "+Route+" "+Sex);
         try{
             System.out.println("abc");
-            flag=DAOFactory.getUserDaoInstance().addDriver(Email,Password,Name,Worknumber,Tel,Route,Sex,status);
+            flag=DAOFactory.getUserDaoInstance().addDriver(Email,Password,Tel,Sex,Worknumber,Username,Route,status);
         }catch (Exception var9){
             System.out.println("DataBaseQueryError!!数据库添加错误。。。");
         }

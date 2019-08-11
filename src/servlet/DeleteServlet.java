@@ -47,7 +47,6 @@ public class DeleteServlet extends HttpServlet {
         boolean success=false;
         //数据库查询
         try {
-
             success = DAOFactory.getUserDaoInstance().DeleteEmail(Email);
             System.out.println("删除了！");
             if (success) {
@@ -60,9 +59,7 @@ public class DeleteServlet extends HttpServlet {
         } catch (Exception var9) {
             System.out.println("DataBaseQueryError!!数据库查询错误。。。");
         }
-
         //返回JSON数据
-
         JSONObject object = new JSONObject();
         object.put("ifsuccess", ifsuccess);
         System.out.println(object);

@@ -48,11 +48,12 @@ public class RegisterServlet extends HttpServlet {
         String  Tel = json.getString("cp_phone");
         String Username =json.getString("username");
         String Password = json.getString("password");
+        String Sex = json.getString("gender");
         int status=0;
         boolean flag = false;
 
         try{
-            flag=DAOFactory.getUserDaoInstance().addUser(Email,Company,Address,Tel,Username,Password,status);
+            flag=DAOFactory.getUserDaoInstance().addUser(Email,Password,Tel,Address,Company,Sex,Username,status);
         }catch (Exception var9){
             System.out.println("DataBaseQueryError!!数据库添加错误。。。");
         }

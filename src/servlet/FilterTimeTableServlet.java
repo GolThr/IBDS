@@ -78,7 +78,7 @@ public class FilterTimeTableServlet extends HttpServlet {
 
         }else{
             try {
-                depatureList = DAOFactory.getDepatureDaoInstance().FilterTimeSelf(Company,Email,Route);
+                depatureList = DAOFactory.getDepatureDaoInstance().FilterTimeSelf(Email);
                 System.out.println("查找了！");
                 if (depatureList.size()>0) {
                     System.out.println("查找自己成功");

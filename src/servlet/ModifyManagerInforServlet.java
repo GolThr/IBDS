@@ -37,10 +37,9 @@ public class ModifyManagerInforServlet extends HttpServlet {
         String Email = json.getString("email");
         String Company = json.getString("company");
         String Address = json.getString("address");
-
-
+        
         try {
-            flag = DAOFactory.getUserDaoInstance().ModifyManagerInfor(Username,Sex,Tel,Email,Company,Address);
+            flag = DAOFactory.getUserDaoInstance().ModifyManagerInfor(Email,Tel,Address,Company,Sex,Username);
             System.out.println("管理员信息修改成功！");
         } catch (Exception var8) {
             System.out.println("DataBaseQueryError!!数据库修改错误。。。");

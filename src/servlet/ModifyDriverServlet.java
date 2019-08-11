@@ -31,11 +31,11 @@ public class ModifyDriverServlet extends HttpServlet {
         JSONObject json = GetRequestJsonUtils.getRequestJsonObject(request);
         System.out.println("json:" + json);
         System.out.println("getJson:OK");
-        String email = json.getString("email");
-        String NewRoute = json.getString("data_new");
+        String Email = json.getString("email");
+        String Route = json.getString("data_new");
 
         try {
-            flag = DAOFactory.getUserDaoInstance().ModifyDriverRoute(email, NewRoute);
+            flag = DAOFactory.getUserDaoInstance().ModifyDriverRoute(Email,Route);
             System.out.println("司机线路修改成功！");
         } catch (Exception var8) {
             System.out.println("DataBaseQueryError!!数据库修改错误。。。");
