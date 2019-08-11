@@ -118,5 +118,30 @@
         <servlet-name>SignUpServlet</servlet-name>
         <url-pattern>/signUp</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>FilterTimeTableServlet</servlet-name>
+        <servlet-class>servlet.FilterTimeTableServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FilterTimeTableServlet</servlet-name>
+        <url-pattern>/filterTimeTable</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>PublishMessageServlet</servlet-name>
+        <servlet-class>servlet.PublishMessageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PublishMessageServlet</servlet-name>
+        <url-pattern>/postNotes</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DriversServlet</servlet-name>
+        <servlet-class>servlet.DriversServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DriversServlet</servlet-name>
+        <url-pattern>/initDriverDays</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

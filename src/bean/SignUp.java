@@ -6,6 +6,34 @@ public class SignUp {
     private String Email;
     private String Times;
     private Date Date;
+    private String tel;
+    private String route;
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getRoute() {
+        return route;
+    }
+
+    public void setRoute(String route) {
+        this.route = route;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private String name;
 
     public java.util.Date getDate() {
         return Date;

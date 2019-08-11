@@ -1,5 +1,6 @@
 var user_info;
 var if_signup = false;
+var driver_line;
 function init() {
     user_info = JSON.parse(sessionStorage.getItem("user_info"));
     console.log(user_info);
@@ -28,6 +29,7 @@ function init() {
             console.log("InitDriverDaysAjax:Success!");
             console.log(msg);
             if(msg.ifsuccess == '1'){
+                driver_line = msg.line;
                 renderingListHeadInfo(msg);
                 $('#company_phone').html(msg.admin+'<br>'+msg.phone);
                 $('.driver_func_signin_days').text(msg.signup_days);
@@ -189,9 +191,9 @@ function showTip(msg){
 
 function onFilterTable(type) {
     //筛选发车表ajax_filterTimeTable_POST
-    //发出(data)：公司名称company, 司机邮箱email, 筛选类别filter_type(查看全部all, 只看自己self)
+    //发出(data)：公司名称company, 司机邮箱email, 筛选类别filter_type(查看全部all, 只看自己self), 线路line
     //接收(jsonArray)：司机姓名driver_name, 发车时间start_time
-    var data= {company:user_info.company,email:user_info.email,filter_type:type};
+    var data= {company:user_info.company,email:user_info.email,filter_type:type,line:driver_line};
     console.log(data);
     console.log("FilterTimeTableAjax");
     $.ajax({
@@ -201,10 +203,10 @@ function onFilterTable(type) {
         type: "post",
         success: function (msg) {
             console.log("FilterTimeTableAjax:Success!");
-            console.log(JSON.parse(msg));
+            console.log(msg);
             $(".time_table_list").html("");
-            renderingListHead(JSON.parse(msg));
-            renderingLists(JSON.parse(msg));
+            renderingListHead(msg);
+            renderingLists(msg);
         },
         error: function (msg) {
             console.log("FilterTimeTableAjax:Error!");

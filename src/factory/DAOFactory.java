@@ -2,6 +2,7 @@ package factory;
 
 
 import bean.SignUp;
+import dao.users.DepatureDaoImpl;
 import dao.users.MessageDaoImpl;
 import dao.users.SignUpDaoImpl;
 import dao.users.UserDaoImpl;
@@ -20,7 +21,11 @@ public class DAOFactory {
         return new MessageDaoImpl();
     }
     public static SignUpDaoImpl getSignupDaoInstance() throws Exception{
-        System.out.println("getInstance-Message:OK");
+        System.out.println("getInstance-Signup:OK");
         return new SignUpDaoImpl();
+    }
+    public static DepatureDaoImpl getDepatureDaoInstance() throws Exception{
+        System.out.println("getInstance-Depature:OK");
+        return new DepatureDaoImpl();
     }
 }
