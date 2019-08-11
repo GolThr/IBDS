@@ -199,11 +199,12 @@ function onShowTodayLogs(date) {
         success: function (msg) {
             console.log("TodayLogsAjax:Success!");
             console.log(msg);
+            $("#driver_list_body").html("");
+            renderingLogsHead();
             if(msg[0] != null){
-                $("#logs_list").html("");
-                renderingLogsHead();
                 renderingLogs(msg);
             }else {
+                renderingNonePage();
                 showTip('未查询到信息，请确保查询时间在一个月之内！');
             }
         },
@@ -211,24 +212,25 @@ function onShowTodayLogs(date) {
             console.log("TodayLogsAjax:Error!");
             console.log(msg);
             alert("请求失败，请重试");
-            msg=[];
-            console.log(msg);
-            if(msg[0] != null){
-                $("#logs_list").html("");
-                renderingLogsHead();
-                renderingLogs(msg);
-            }else {
-                showTip('未查询到信息，请确保查询时间在一个月之内！')
-            }
+            // msg=[];
         }
     });
 }
 
+function renderingNonePage() {
+    $("#driver_list_body").append('<div class="item_none">\n' +
+        '                    <img src="images/pic_none.png" onclick="" style="width: 200px;height: auto;"/>\n' +
+        '                    <span style="width: 100%;text-align: center;margin-top: 30px;">未查询到信息</span>\n' +
+        '                </div>');
+}
+
 function renderingLogsHead(){
-    $("#logs_list").append('<tr>\n' +
+    $("#driver_list_body").append('<table id="logs_list" class="data_list driver_list" style="border-collapse:separate; border-spacing:0px 10px;">\n' +
+        '                        <tr>\n' +
         '                            <td>司机姓名</td>\n' +
         '                            <td>发车时间</td>\n' +
-        '                        </tr>');
+        '                        </tr>\n' +
+        '                    </table>');
 }
 
 function renderingLogs(msg){
@@ -241,7 +243,7 @@ function renderingLogs(msg){
 }
 
 function renderingNonePage() {
-    $(".driver_mine_notes_page").append('<div class="item_none">\n' +
+    $("#driver_list_body").append('<div class="item_none">\n' +
         '                    <img src="images/pic_none.png" onclick="" style="width: 200px;height: auto;"/>\n' +
         '                    <span style="width: 100%;text-align: center;margin-top: 30px;">未查询到信息</span>\n' +
         '                </div>');
