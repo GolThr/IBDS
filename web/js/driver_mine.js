@@ -204,7 +204,7 @@ function onShowTodayLogs(date) {
             if(msg[0] != null){
                 renderingLogs(msg);
             }else {
-                renderingNonePage();
+                renderingTimeTableNonePage();
                 showTip('未查询到信息，请确保查询时间在一个月之内！');
             }
         },
@@ -217,7 +217,7 @@ function onShowTodayLogs(date) {
     });
 }
 
-function renderingNonePage() {
+function renderingTimeTableNonePage() {
     $("#driver_list_body").append('<div class="item_none">\n' +
         '                    <img src="images/pic_none.png" onclick="" style="width: 200px;height: auto;"/>\n' +
         '                    <span style="width: 100%;text-align: center;margin-top: 30px;">未查询到信息</span>\n' +
@@ -243,7 +243,7 @@ function renderingLogs(msg){
 }
 
 function renderingNonePage() {
-    $("#driver_list_body").append('<div class="item_none">\n' +
+    $(".driver_mine_notes_page").append('<div class="item_none">\n' +
         '                    <img src="images/pic_none.png" onclick="" style="width: 200px;height: auto;"/>\n' +
         '                    <span style="width: 100%;text-align: center;margin-top: 30px;">未查询到信息</span>\n' +
         '                </div>');
