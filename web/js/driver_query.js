@@ -63,7 +63,8 @@ function renderingNonePage() {
 }
 
 function renderingListHeadInfo(msg) {
-    $('#table_date').text(msg.today_date);
+    var today = msg.today_date;
+    $('#table_date').text(today.substr(0, 4) + '年' + today.substr(5, 2) + '月' + today.substr(8, 2) + '日');
     $('#table_line').text(msg.line);
 }
 
