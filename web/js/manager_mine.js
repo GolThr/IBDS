@@ -53,15 +53,15 @@ function onModifyInfo(){
     var manager_email = $.trim($('#manager_email').val());
     var manager_company = $.trim($('#manager_company').val());
     var manager_address = $.trim($('#manager_address').val());
-    if(manager_username != '' || manager_username != null){
+    if(manager_username != '' && manager_username != null){
         $('#manager_username').css({'border-color': 'rgba(203,54,56,0)'});
-        if(manager_gender != '' || manager_username != null){
+        if(manager_gender != '' && manager_gender != null){
             $('#manager_gender').css({'border-color': 'rgba(203,54,56,0)'});
-            if(manager_phone != '' || manager_username != null){
+            if(manager_phone != '' && manager_phone != null){
                 $('#manager_phone').css({'border-color': 'rgba(203,54,56,0)'});
-                if(manager_company != '' || manager_username != null){
+                if(manager_company != '' && manager_company != null){
                     $('#manager_company').css({'border-color': 'rgba(203,54,56,0)'});
-                    if(manager_address != '' || manager_username != null){
+                    if(manager_address != '' && manager_address != null){
                         $('#manager_address').css({'border-color': 'rgba(203,54,56,0)'});
                         //修改信息ajax_modifyManagerInfo_POST
                         //发出(data)：用户名username, 性别gender, 手机号phone, 邮箱email, 公交公司company, 地址address
