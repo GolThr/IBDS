@@ -50,7 +50,7 @@ function init() {
         }
     });
 
-    onFilterTable('all');
+    onFilterTable('self');
 }
 
 function renderingListHeadInfo(msg) {
