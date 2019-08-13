@@ -322,7 +322,6 @@ function getVerifyCode(jqnode) {
             type: "post",
             success: function (msg) {
                 console.log("GetVerifyCodeAjax:Success!");
-                console.log(msg);
                 verifyCode = msg.verifyCode;
             },
             error: function (msg) {
