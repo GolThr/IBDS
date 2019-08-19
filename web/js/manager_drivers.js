@@ -1,15 +1,6 @@
-var user_info;
 function init() {
-    user_info = JSON.parse(sessionStorage.getItem("user_info"));
-    console.log(user_info);
-    if(user_info == null || user_info.ifsuccess != "1"){
-        location.href = "index.html";
-    }else if(user_info.user_type != '0'){
-        location.href = "index.html";
-    }else{
-        $(".manager_head").attr("src", user_info.avatar);
-        $('.manager_name').text(user_info.username);
-    }
+    initManagerHeader();
+
     $("#manager_drivers").css({'border-bottom':'rgba(255, 255, 255, 1) solid 5px'});
 
     //初始化司机信息ajax_initDrivers_POST

@@ -93,7 +93,7 @@ body{
     position: fixed;
     bottom: 20px;
     right: 0;
-    z-index: 101;
+    z-index: 500;
 }
 
 .driver_func_item{
@@ -132,6 +132,7 @@ body{
     position: fixed;
     bottom: 155px;
     right: 55px;
+    z-index: 500;
 }
 
 .driver_func_phone{
@@ -148,6 +149,7 @@ body{
     position: fixed;
     bottom: 104px;
     right: 55px;
+    z-index: 500;
 }
 
 .driver_func_signin{
@@ -174,6 +176,7 @@ body{
     position: fixed;
     bottom: 20px;
     right: 55px;
+    z-index: 500;
 }
 
 .driver_func_note{

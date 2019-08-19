@@ -1,15 +1,6 @@
-var user_info;
 function init() {
-    user_info = JSON.parse(sessionStorage.getItem("user_info"));
-    console.log(user_info);
-    if(user_info == null || user_info.ifsuccess != "1"){
-        location.href = "index.html";
-    }else if(user_info.user_type != '1'){
-        location.href = "index.html";
-    }else{
-        $(".manager_head").attr("src", user_info.avatar);
-        $('.manager_name').text(user_info.username);
-    }
+    initDriverHeader();
+
     $("#driver_mine").css({'border-bottom':'rgba(255, 255, 255, 1) solid 5px'});
     $("#driver_menu_logs").css({'background':'rgba(125, 197, 193, 0.1)'});
     $(".driver_mine_logs_page").show();
@@ -36,7 +27,7 @@ function getDateStr(date) {
 }
 
 function initManagerInfo(){
-    $('.mine_user_head').attr('src', user_info.avatar);
+    $('.mine_user_head').attr('src', '/IBDS/head/'+user_info.avatar);
     $('.mine_user_name').text(user_info.username);
     $('#driver_username').val(user_info.username);
     if(user_info.gender == '男'){
@@ -254,7 +245,7 @@ function renderingNotes(msg){
         $(".driver_mine_notes_page").append('<div class="mine_card_item">\n' +
             '                    <div class="mine_card_item_top">\n' +
             '                        <div>\n' +
-            '                            <img class="author_head" src="'+msg[i].author_avatar+'" onclick=""/>\n' +
+            '                            <img class="author_head" src="'+'/IBDS/head/'+msg[i].author_avatar+'" onclick=""/>\n' +
             '                            <span class="author_name">'+msg[i].author+'</span>\n' +
             '                        </div>\n' +
             '                        <span class="publish_time">'+msg[i].publish_time+'</span>\n' +

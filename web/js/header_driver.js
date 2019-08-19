@@ -16,3 +16,17 @@ document.writeln("<div class=\"default_header\">\n" +
     "            </div>\n" +
     "        </div>\n" +
     "    </div>");
+
+var user_info;
+function initDriverHeader() {
+    user_info = JSON.parse(sessionStorage.getItem("user_info"));
+    console.log(user_info);
+    if(user_info == null || user_info.ifsuccess != "1"){
+        location.href = "index.html";
+    }else if(user_info.user_type != '1'){
+        location.href = "index.html";
+    }else{
+        $(".manager_head").attr("src", '/IBDS/head/'+user_info.avatar);
+        $('.manager_name').text(user_info.username);
+    }
+}

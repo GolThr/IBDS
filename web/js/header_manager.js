@@ -33,3 +33,17 @@ function outManagerFunc() {
     $(".data_uploade_tab_list").stop();
     $(".data_uploade_tab_list").slideUp(100);
 }
+
+var user_info;
+function initManagerHeader() {
+    user_info = JSON.parse(sessionStorage.getItem("user_info"));
+    console.log(user_info);
+    if(user_info == null || user_info.ifsuccess != "1"){
+        location.href = "index.html";
+    }else if(user_info.user_type != '0'){
+        location.href = "index.html";
+    }else{
+        $(".manager_head").attr("src", '/IBDS/head/'+user_info.avatar);
+        $('.manager_name').text(user_info.username);
+    }
+}

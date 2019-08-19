@@ -1,17 +1,8 @@
-var user_info;
 var if_signup = false;
 var driver_line;
 function init() {
-    user_info = JSON.parse(sessionStorage.getItem("user_info"));
-    console.log(user_info);
-    if(user_info == null || user_info.ifsuccess != "1"){
-        location.href = "index.html";
-    }else if(user_info.user_type != '1'){
-        location.href = "index.html";
-    }else{
-        $(".manager_head").attr("src", user_info.avatar);
-        $('.manager_name').text(user_info.username);
-    }
+    initDriverHeader();
+
     $("#driver_query").css({'border-bottom':'rgba(255, 255, 255, 1) solid 5px'});
 
     //初始化界面信息ajax_initDriverDays_POST
