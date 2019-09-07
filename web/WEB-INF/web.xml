@@ -160,4 +160,23 @@
         <servlet-name>LogServlet</servlet-name>
         <url-pattern>/todayLogs</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>uploadFiles</servlet-name>
+        <servlet-class>servlet.UploadFilesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>uploadFiles</servlet-name>
+        <url-pattern>/uploadFiles</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>query_bus</servlet-name>
+        <servlet-class>servlet.QueryBusServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>query_bus</servlet-name>
+        <url-pattern>/query_bus</url-pattern>
+    </servlet-mapping>
+
 </web-app>

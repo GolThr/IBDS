@@ -2,10 +2,7 @@ package factory;
 
 
 import bean.SignUp;
-import dao.users.DepatureDaoImpl;
-import dao.users.MessageDaoImpl;
-import dao.users.SignUpDaoImpl;
-import dao.users.UserDaoImpl;
+import dao.users.*;
 
 public class DAOFactory {
 //    public static AthleteDaoImpl getAthleteDaoInstance() throws Exception{
@@ -28,4 +25,11 @@ public class DAOFactory {
         System.out.println("getInstance-Depature:OK");
         return new DepatureDaoImpl();
     }
+    public static CompanyDaoImpl getCompanyDaoInstance()throws Exception{
+        System.out.println("getInstance-Depature:OK");
+        return new CompanyDaoImpl();
+    }
+
+
+
 }
