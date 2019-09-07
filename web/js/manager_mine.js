@@ -247,6 +247,12 @@ $("#manager_menu_changepwd").click(function (e) {
     $(".manager_mine_changepwd_page").fadeIn(100);
 });
 
+$("#manager_menu_data_visualization").click(function (e) {
+    $('.data_visual_transition').fadeIn(1000, function () {
+        location.href = '/IBDS/公交系统数据看板.html';
+    })
+});
+
 //绑定所有type=file的元素的onchange事件的处理函数
 $(':file').change(function () {
     var file = this.files[0]; //假设file标签没打开multiple属性，那么只取第一个文件就行了
