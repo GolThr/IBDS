@@ -243,7 +243,7 @@ function onAddDriverBtn() {
                             //添加司机ajax_addDriver_POST
                             //发出(data)：邮箱email, 司机姓名name, 工号id, 电话phone, 线路line, 性别gender
                             //接收(json)：ifsuccess:0(失败),1(成功)
-                            var data= {email:add_email,name:add_name,id:add_id,phone:add_phone,line:add_line,gender:add_gender};
+                            var data= {company:user_info.company,email:add_email,name:add_name,id:add_id,phone:add_phone,line:add_line,gender:add_gender};
                             console.log(data);
                             console.log("AddDriverAjax");
                             $.ajax({
