@@ -105,7 +105,7 @@ function progressHandlingFunction(e) {
         $('.dialog_btn_upload_complete').text(percent.toFixed(2) + "%");
         $('#progress').css('width', percent.toFixed(2) + "%");
         if(e.loaded === e.total){
-            $(".dialog_btn_upload_complete").text("上传完成");
+            $(".dialog_btn_upload_complete").text("上传完成,请到发车查询处查看结果");
         }
     }
 }

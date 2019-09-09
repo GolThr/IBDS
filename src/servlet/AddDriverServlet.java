@@ -39,6 +39,7 @@ public class AddDriverServlet extends HttpServlet {
         System.out.println("json:"+json);
         System.out.println("getJson:OK");
 
+        String Company = json.getString("company");
         String Email = json.getString("email");
         String Username = json.getString("name");
         String Worknumber =json.getString("id");
@@ -46,20 +47,16 @@ public class AddDriverServlet extends HttpServlet {
         String Route =json.getString("line");
         String Sex = json.getString("gender");
         int status=1;
+        String company=Company;
         String Password="123456";
         boolean flag = false;
         System.out.println(Email+" "+Username+" " + Worknumber+" "+ Tel+" "+Route+" "+Sex);
         try{
             System.out.println("abc");
-            flag=DAOFactory.getUserDaoInstance().addDriver(Email,Password,Tel,Sex,Worknumber,Username,Route,status);
+            flag=DAOFactory.getUserDaoInstance().addDriver(Email,Password,Tel,Sex,Worknumber,Username,Route,status,company);
         }catch (Exception var9){
             System.out.println("DataBaseQueryError!!数据库添加错误。。。");
         }
-
-        JSONObject object = new JSONObject();
-        object.put("ifsuccess",flag);
-        System.out.println(object);
-        response.getWriter().print(object);
 
     }
 

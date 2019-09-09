@@ -263,7 +263,7 @@ function onAddDriverBtn() {
                                 error: function (msg) {
                                     console.log("AddDriverAjax:Error!");
                                     console.log(msg);
-                                    alert("请求失败，请重试");
+                                    location.reload();
                                 }
                             });
                         }else {

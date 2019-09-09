@@ -122,10 +122,10 @@ public class UserDaoImpl {
     }
 
     //管理员添加司机信息     根据管理员输入的信息将一条新的司机记录插入到表中（注意触发器的存在）对应的是AddDriverServlet
-    public boolean addDriver(String Email,String Password,String Tel,String Sex,String Worknumber,String Username,String Route,int status) throws Exception {
+    public boolean addDriver(String Email,String Password,String Tel,String Sex,String Worknumber,String Username,String Route,int status,String company) throws Exception {
         System.out.println("addDriver:...");
         boolean flag = false;
-        String sql = "INSERT INTO user_table(Email,Password,Tel,Sex,Worknumber,Username,route,Status) VALUES(?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO user_table(Email,Password,Tel,Sex,Worknumber,Username,route,Status,company) VALUES(?,?,?,?,?,?,?,?,?)";
         this.pstmt = this.conn.prepareStatement(sql);
         this.pstmt.setString(1,Email);
         this.pstmt.setString(2,Password);
@@ -135,6 +135,7 @@ public class UserDaoImpl {
         this.pstmt.setString(6,Username);
         this.pstmt.setString(7,Route);
         this.pstmt.setInt(8,status);
+        this.pstmt.setString(9,company);
         System.out.println("addDriver-sql:" + sql);
         if (this.pstmt.executeUpdate() > 0) {
             flag = true;

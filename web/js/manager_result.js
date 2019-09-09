@@ -89,30 +89,31 @@ function doPrint() {
 }
 
 function doSave() {
-    //发车表保存到本地ajax_saveTimeTable_POST
-    //发出(data)：公司名称company
-    //接收(json)：ifsuccess:0(失败),1(成功), 文件路径url
-    var data = {company:user_info.company};
-    console.log(data);
-    console.log("SaveTimeTableAjax");
-    $.ajax({
-        url: "/IBDS/saveTimeTable", //后台请求数据
-        dataType: "json",
-        data:JSON.stringify(data),
-        type: "post",
-        success: function (msg) {
-            console.log("LoginAjax:Success!");
-            console.log(msg);
-            if(msg.ifsuccess){
-                window.open(msg.url);
-            }
-        },
-        error: function (msg) {
-            console.log("LoginAjax:Error!");
-            console.log(msg);
-            alert("请求失败，请重试");
-        }
-    });
+    showTip('正在开发中，敬请期待!!');
+    // //发车表保存到本地ajax_saveTimeTable_POST
+    // //发出(data)：公司名称company
+    // //接收(json)：ifsuccess:0(失败),1(成功), 文件路径url
+    // var data = {company:user_info.company};
+    // console.log(data);
+    // console.log("SaveTimeTableAjax");
+    // $.ajax({
+    //     url: "/IBDS/saveTimeTable", //后台请求数据
+    //     dataType: "json",
+    //     data:JSON.stringify(data),
+    //     type: "post",
+    //     success: function (msg) {
+    //         console.log("LoginAjax:Success!");
+    //         console.log(msg);
+    //         if(msg.ifsuccess){
+    //             window.open(msg.url);
+    //         }
+    //     },
+    //     error: function (msg) {
+    //         console.log("LoginAjax:Error!");
+    //         console.log(msg);
+    //         alert("请求失败，请重试");
+    //     }
+    // });
 }
 
 function doSignUp() {

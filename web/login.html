@@ -66,7 +66,7 @@
                             <input id="forgot_email" class="default_input email_input" type="email" placeholder="常用邮箱" onfocus="onForgotPWDBlur()" oninput="onForgotPWDBlur()"/>
                             <div class="verification_line">
                                 <input id="forgot_verify" class="default_input" type="text" placeholder="验证码" style="width: 90px;" value="" maxlength="4" oninput="value=value.replace(/[^\d]/g,'');onForgotPWDBlur()" onfocus="onForgotPWDBlur();" onblur="checkVerifyCode($('#forgot_verify'));"/>
-                                <button id="btn_get_code_1" class="secondary_button_style" onclick="console.log('code!');$('#btn_get_code_1').hide();$('#btn_wait_1').show();waitBtn(60);getVerifyCode('forgot_email');" style="width: 100px;margin-top: 15px;">获取验证码</button>
+                                <button id="btn_get_code_1" class="secondary_button_style" onclick="showTipMsg('为了方便您的测试，我们将验证码默认为2591。');console.log('code!');$('#btn_get_code_1').hide();$('#btn_wait_1').show();waitBtn(60);getVerifyCode('forgot_email');" style="width: 100px;margin-top: 15px;">获取验证码</button>
                                 <button id="btn_wait_1" class="secondary_button_style" style="width: 100px;display: none;margin-top: 15px;"><span class="time_left_btn" style="color: #7dc5c1">60</span>s重新获取</button>
                             </div>
                             <!--                            <input id="register_verify" class="default_input password_input" type="text" placeholder="验证码" onfocus="onStepOneBlur()" oninput="onStepOneBlur()"/>-->
@@ -91,7 +91,7 @@
                             <input id="register_email" class="default_input email_input" type="email" placeholder="常用邮箱" onfocus="onStepOneBlur()" oninput="onStepOneBlur()"/>
                             <div class="verification_line">
                                 <input id="register_verify" class="default_input" type="text" placeholder="验证码" style="width: 90px;" value="" maxlength="4" oninput="value=value.replace(/[^\d]/g,'');onStepOneBlur();" onfocus="onStepOneBlur();" onblur="checkVerifyCode($('#register_verify'))"/>
-                                <button id="btn_get_code" class="secondary_button_style" onclick="console.log('code!');$('#btn_get_code').hide();$('#btn_wait').show();waitBtn(60);getVerifyCode('register_email');" style="width: 100px;margin-top: 15px;">获取验证码</button>
+                                <button id="btn_get_code" class="secondary_button_style" onclick="showTipMsg('为了方便您的测试，我们将验证码默认为2591。');console.log('code!');$('#btn_get_code').hide();$('#btn_wait').show();waitBtn(60);getVerifyCode('register_email');" style="width: 100px;margin-top: 15px;">获取验证码</button>
                                 <button id="btn_wait" class="secondary_button_style" style="width: 100px;display: none;margin-top: 15px;"><span class="time_left_btn" style="color: #7dc5c1">60</span>s重新获取</button>
                             </div>
 <!--                            <input id="register_verify" class="default_input password_input" type="text" placeholder="验证码" onfocus="onStepOneBlur()" oninput="onStepOneBlur()"/>-->
@@ -134,7 +134,31 @@
         </div>
     </div>
 
+    <!--dialog-->
+    <div class="dialog_content dialog_content_process" style="display: none;" onclick="dialogBack()">
+        <!--tips-->
+        <div class="dialog_pop dialog_pop_tips" style="display: none;height: 18rem;width: 28rem;">
+            <span class="dialog_header"></span>
+            <span class="dialog_title dialog_title_tips" style="margin-bottom: 0.3rem;">提示：<br>默认管理员账号：<br>12234554546@163.com，<br>密码：123456<br>默认司机账号：<br>1234567890@163.com，<br>密码：123456</span>
+            <div class="dialog_btn_line">
+                <button class="main_btn_style dialog_btn_tips" onclick="dialogBack()" style="margin-top: 0rem;width: 70px;">知道了</button>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript" src="js/drag.js"></script>
     <script type="text/javascript" src="js/login_register.js"></script>
+    <script type="text/javascript">
+        function showTip(){
+            $('.dialog_content').fadeIn('fast');
+            $('.dialog_pop_tips').fadeIn('fast');
+        }
+        showTip();
+        function showTipMsg(msg){
+            $('.dialog_content').fadeIn('fast');
+            $('.dialog_pop_tips').fadeIn('fast');
+            $('.dialog_title_tips').text(msg);
+        }
+    </script>
 </body>
 </html>
