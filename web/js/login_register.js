@@ -14,7 +14,7 @@ var forgot_verify;
 var forgot_pwd;
 var forgot_repwd;
 
-var verifyCode = '1234';
+var verifyCode = '2591';
 var isVerifyCorrect = false;
 
 function checkEmail(email) {

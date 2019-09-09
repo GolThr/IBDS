@@ -1,5 +1,5 @@
 var if_signup = false;
-var driver_line;
+var driver_line = '1号线';
 function init() {
     initManagerHeader();
 
@@ -43,7 +43,7 @@ function init() {
         }
     });
 
-    onFilterTable('self');
+    onFilterTable('all');
 }
 
 function renderingNonePage() {

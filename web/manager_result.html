@@ -17,28 +17,9 @@
     <script type="text/javascript" src="js/header_manager.js"></script>
 
     <div class="driver_func_float">
-        <div class="driver_func_item" onmouseover="onFuncPhone()" onmouseleave="outFuncPhone()">
-            <img src="images/ic_phone.png" onclick=""/>
-        </div>
-        <div class="driver_func_item" onmouseover="onFuncSignIn()" onmouseleave="outFuncsignIn()">
-            <img src="images/ic_signin.png" onclick=""/>
-        </div>
-        <div class="driver_func_item" onmouseover="onFuncNote()" onmouseleave="outFuncNote()">
-            <img src="images/ic_note.png" onclick=""/>
-        </div>
         <a class="driver_func_item" href="#top">
             <img class="driver_func_return_top" src="images/ic_return_top.png" onclick=""/>
         </a>
-    </div>
-
-<!--    func_float-->
-    <div class="driver_func_note_content" style="display: none;" onmouseover="onFuncNote()" onmouseleave="outFuncNote()">
-        <div class="driver_func_note">
-            <span>留言(200字以内)</span>
-            <textarea class="driver_func_note_info" maxlength="200"></textarea>
-            <a class="driver_func_note_send" onclick="doPostNotes()">发送</a>
-        </div>
-        <img src="images/ic_arrow.png" style="margin-top: 80px;width: 7px;height: auto;" onclick=""/>
     </div>
 
     <div class="driver_query_body" style="position: relative;">
@@ -50,7 +31,7 @@
         </div>
 
         <!--startprint-->
-        <span class="table_head"><span id="table_date">-年-月-日</span>&nbsp;&nbsp;<span id="table_line">-号线</span>&nbsp;发车时间表</span>
+        <span class="table_head"><span id="table_date">-年-月-日</span>&nbsp;&nbsp;&nbsp;发车时间表</span>
 
         <div class="data_list_body driver_list_body">
             <table class="data_list time_table_list" style="border-collapse:separate; border-spacing:0px 10px;">
