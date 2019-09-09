@@ -38,12 +38,12 @@ function onUploadFile() {
             if(msg.ifsuccess == '1'){
                 console.log("成功");
             }else {
-                alert('内部错误，请联系管理员！');
+                console.log('内部错误，请联系管理员！');
             }
         },
         error: function(msg){
             console.log("error!");
-            alert("请求失败，请重试");
+            console.log("请求失败，请重试");
         },
         contentType: false, //必须false才会自动加上正确的Content-Type
         processData: false  //必须false才会避开jQuery对 formdata 的默认处理
