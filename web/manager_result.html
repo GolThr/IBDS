@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发车查询-智能公交调度系统</title>
+    <link rel="stylesheet" href="styles/main_styles.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/driver_query_styles.css" type="text/css"/>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/affects.js"></script>
+    <script type="text/javascript">
+        window.onload = (function (e) {
+            init();
+        });
+    </script>
+</head>
+<body id="#top">
+    <script type="text/javascript" src="js/header_manager.js"></script>
+
+    <div class="driver_func_float">
+        <div class="driver_func_item" onmouseover="onFuncPhone()" onmouseleave="outFuncPhone()">
+            <img src="images/ic_phone.png" onclick=""/>
+        </div>
+        <div class="driver_func_item" onmouseover="onFuncSignIn()" onmouseleave="outFuncsignIn()">
+            <img src="images/ic_signin.png" onclick=""/>
+        </div>
+        <div class="driver_func_item" onmouseover="onFuncNote()" onmouseleave="outFuncNote()">
+            <img src="images/ic_note.png" onclick=""/>
+        </div>
+        <a class="driver_func_item" href="#top">
+            <img class="driver_func_return_top" src="images/ic_return_top.png" onclick=""/>
+        </a>
+    </div>
+
+<!--    func_float-->
+    <div class="driver_func_note_content" style="display: none;" onmouseover="onFuncNote()" onmouseleave="outFuncNote()">
+        <div class="driver_func_note">
+            <span>留言(200字以内)</span>
+            <textarea class="driver_func_note_info" maxlength="200"></textarea>
+            <a class="driver_func_note_send" onclick="doPostNotes()">发送</a>
+        </div>
+        <img src="images/ic_arrow.png" style="margin-top: 80px;width: 7px;height: auto;" onclick=""/>
+    </div>
+
+    <div class="driver_query_body" style="position: relative;">
+        <div class="driver_query_top">
+            <button class="main_btn_style driver_query_print" onclick="doPrint()">打印</button>
+            <div class="driver_query_right_btn_line">
+                <button class="main_btn_style driver_query_save" onclick="doSave()">保存到本地</button>
+            </div>
+        </div>
+
+        <!--startprint-->
+        <span class="table_head"><span id="table_date">-年-月-日</span>&nbsp;&nbsp;<span id="table_line">-号线</span>&nbsp;发车时间表</span>
+
+        <div class="data_list_body driver_list_body">
+            <table class="data_list time_table_list" style="border-collapse:separate; border-spacing:0px 10px;">
+                <tr>
+                    <td>司机姓名</td>
+                    <td>发车时间</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!--endprint-->
+
+    <!--dialog-->
+    <div class="dialog_content dialog_content_process" style="display: none;" onclick="dialogBack()">
+        <!--tips-->
+        <div class="dialog_pop dialog_pop_tips" style="display: none;height: 12rem;width: 28rem;">
+            <span class="dialog_header"></span>
+            <span class="dialog_title dialog_title_tips">更改成功</span>
+            <div class="dialog_btn_line">
+                <button class="main_btn_style dialog_btn_tips" onclick="dialogBack()" style="width: 70px;">知道了</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="js/footer.js"></script>
+    <script type="text/javascript" src="js/manager_result.js"></script>
+</body>
+</html>
