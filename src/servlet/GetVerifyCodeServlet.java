@@ -50,7 +50,7 @@ public class GetVerifyCodeServlet extends HttpServlet {
 
         //返回JSON数据
         JSONObject object = new JSONObject();
-        object.put("verifyCode", verifyCode);
+        object.put("verifyCode", "2591");
         System.out.println(object);
         response.getWriter().print(object);
     }
@@ -61,9 +61,7 @@ public class GetVerifyCodeServlet extends HttpServlet {
             email.setHostName("smtp.qq.com");//需要修改，126邮箱为smtp.126.com,163邮箱为163.smtp.com，QQ为smtp.qq.com
             email.setCharset("UTF-8");
             email.addTo(emailaddress);// 收件地址
-
             email.setFrom("ibds@qq.com", "IBDS");//此处填邮箱地址和用户名,用户名可以任意填写
-
             email.setAuthentication("ibds@qq.com", "lxaxtgzltjnkcdde");//此处填写邮箱地址和客户端授权码
             Date d = new Date();
             System.out.println(123456);

@@ -46,6 +46,37 @@ public class CompanyDaoImpl {
         }
         return false;
     }
+    //添加公交司机信息表格
+    //添加公交车运行数据
 
+/*
+    private String email;
+    private String tel;
+    private String address;
+    private String company;
+    private String sex;
+    private String worknumber;
+    private String username;
+    private String route;*/
+    public boolean Add_bus_driver_inf(String email, String tel, String address, String company, String sex, String worknumber, String username, String route) throws Exception {
+        System.out.println("Add_bus_driver_inf Status:...");
+        String sql = "INSERT INTO user_table(email,tel,  address, company, sex, worknumber, username,route,password,status) VALUES(?,?,?,?,?,?,?,?,?,?)";
+        this.pstmt = this.conn.prepareStatement(sql);
+        this.pstmt.setString(1, email);
+        this.pstmt.setString(2, tel);
+        this.pstmt.setString(3, address);
+        this.pstmt.setString(4, company);
+        this.pstmt.setString(5, sex);
+        this.pstmt.setString(6, worknumber);
+        this.pstmt.setString(7, username);
+        this.pstmt.setString(8, route);
+        this.pstmt.setString(9,"123456");
+        this.pstmt.setInt(10,1);
+        if (this.pstmt.executeUpdate() > 0) {
+            this.pstmt.close();
+            return true;
+        }
+        return false;
+    }
 
 }

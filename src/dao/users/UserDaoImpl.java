@@ -148,7 +148,7 @@ public class UserDaoImpl {
     public boolean addUser(String Email,String Password,String Tel,String Address,String Company,String Sex,String Username,int Status) throws Exception {
         System.out.println("addUser:...");
         boolean flag = false;
-        String sql = "INSERT INTO user_table(Email, Password, Tel, Address, Company, Sex Username,Status) VALUES(?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO user_table(Email, Password, Tel, Address, Company, Sex,Username,Status) VALUES(?,?,?,?,?,?,?,?)";
         this.pstmt = this.conn.prepareStatement(sql);
         this.pstmt.setString(1,Email);
         this.pstmt.setString(2,Password);

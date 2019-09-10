@@ -13,8 +13,9 @@ function onUploadFile() {
     $(".dialog_btn_upload_complete").show();
     //创建FormData对象，初始化为form表单中的数据。需要添加其他数据可使用formData.append("property", "value");
     var formData = new FormData();
-    formData.append("file", $('#file_input')[0].files[0]);
     formData.append("upload_type", upload_type);
+    formData.append("file", $('#file_input')[0].files[0]);
+
     console.log($('#file_input')[0].files[0]);
     console.log(formData);
     console.log("UploadFileAjax");

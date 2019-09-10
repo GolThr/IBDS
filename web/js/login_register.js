@@ -320,6 +320,7 @@ function getVerifyCode(jqnode) {
             dataType: "json",
             data:JSON.stringify(data),
             type: "post",
+
             success: function (msg) {
                 console.log("GetVerifyCodeAjax:Success!");
                 verifyCode = msg.verifyCode;

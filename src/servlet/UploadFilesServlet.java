@@ -1,5 +1,6 @@
 package servlet;
 
+import com.alibaba.fastjson.JSONObject;
 import factory.DAOFactory;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -28,6 +29,7 @@ public class UploadFilesServlet extends HttpServlet {
         //直到下一个注释之前的代码不要动
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=utf-8");
+        int type = -1;
         try {
             //这些不需要动
             DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -42,17 +44,32 @@ public class UploadFilesServlet extends HttpServlet {
                 if (fileItem.isFormField()) {
                     System.out.println(fileItem.getFieldName()+"  "+fileItem.getFieldName().toString()+"  "+"userId");
                     //可以查询fileItem.getFieldName函数的作用，类似于获取json中的key
-                    if(fileItem.getFieldName().equals("userId")){//如果这个是userId,则需要做哪些事情
-                        //这个if里没有什么东西，只是便于以后修改
-                    }/*else if(fileItem.getFieldName().equals("checkWord")){
-                        String temp = fileItem.getString();
-                        //存入数据库query的query——field
-                        System.out.println(fileItem.getString());
-                    }*/
+                    if(fileItem.getFieldName().equals("upload_type")){//如果这个是userId,则需要做哪些事情
+                        //判断是0还是1，如果是0公交数据，1司机信息
+                        type =  Integer.parseInt( fileItem.getString());
+                    }
                 }else{
-                    readExcel(fileItem.getInputStream());
+
                 }
             }
+            for(Object object:items){
+                FileItem fileItem = (FileItem) object;
+                //在这个循环里，每次读取从formdata获取到的数据，判断是否是文件
+                //这个if判断如果是文件返回false，不是文件返回true
+                if (fileItem.isFormField()) {
+                }else{
+                    if(type == 0){
+                        readExcel(fileItem.getInputStream());
+                    }else if(type == 1){
+                        readExcel_people(fileItem.getInputStream());
+                    }
+                }
+            }
+            JSONObject object = new JSONObject();
+            object.put("ifsuccess", 1);
+            System.out.println(object);
+            response.getWriter().print(object);
+
             //使用params.get获取参数值 send_time就是key
         } catch (FileUploadException e1) {
             e1.printStackTrace();
@@ -101,6 +118,46 @@ public class UploadFilesServlet extends HttpServlet {
             }
         }
     }
+
+    public static void readExcel_people(InputStream input) throws Exception  {
+        Workbook wb = null;
+        try {
+            wb = WorkbookFactory.create(input);
+            Sheet sheet = wb.getSheetAt(0); // 获得第一个表单
+            int totalRow = sheet.getLastRowNum();// 得到excel的总记录条数
+            int columtotal = sheet.getRow(0).getPhysicalNumberOfCells();// 表头总共的列数
+            System.out.println("总行数:" + totalRow + ",总列数:" + columtotal);
+            for (int i = 1; i <= totalRow; i++) {// 遍历行
+                for(int j = 0; j < 8; j ++){
+                    sheet.getRow(i).getCell(j).setCellType(CellType.STRING);
+                }
+                String worknumber= sheet.getRow(i).getCell(0).getStringCellValue();
+                String username= sheet.getRow(i).getCell(1).getStringCellValue();
+                String sex= sheet.getRow(i).getCell(2).getStringCellValue();
+                String company= sheet.getRow(i).getCell(3).getStringCellValue();
+                String tel= sheet.getRow(i).getCell(4).getStringCellValue();
+                String email = sheet.getRow(i).getCell(5).getStringCellValue();
+                String address= sheet.getRow(i).getCell(6).getStringCellValue();
+                String route= sheet.getRow(i).getCell(7).getStringCellValue() + "路线";
+                System.out.println(worknumber+username);
+                DAOFactory.getCompanyDaoInstance().Add_bus_driver_inf(email,tel,  address, company, sex, worknumber, username,route);
+                //在这里上传完毕成功
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new Exception(ex);
+        }finally {
+            try {
+                input.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
     }
